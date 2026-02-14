@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What was the global CO2 emissions from fossil fuels and industry in 2023?",
+    "units": "gigatons",
+    "answer": 37.4,
+    "source_text": "Global energy-related CO2 emissions grew by 1.1% in 2023, increasing 410 million tonnes (Mt) to reach a new record high of 37.4 billion tonnes (Gt).",
+    "source_url": "https://www.iea.org/reports/co2-emissions-in-2023/executive-summary",
+    "category": "energy-environment",
+    "year": 2023,
+    "difficulty": "medium",
+    "id": "3ed4c93a-de0a-4573-b114-4999948b8909"
+  },
+  {
+    "question": "What was the global installed desalination capacity in 2024?",
+    "units": "million cubic meters per day",
+    "answer": 91.5,
+    "source_text": "As of 2024, global installed desalination capacity stands at around 91.5 million cubic meters per day, with contracted projects bringing the total committed capacity to about 105 million cubic meters per day.",
+    "source_url": "https://idrawater.org/news/road-to-reykjavik-part-2-mitigation-through-innovation-decarbonizing-desalination-and-reuse/",
+    "category": "infrastructure",
+    "year": 2024,
+    "difficulty": "hard",
+    "id": "155a57f5-30ea-41e0-97f7-c7a6131f2371"
+  },
+  {
+    "question": "How many thousand malaria deaths occurred in African Union Member States in 2023?",
+    "units": "thousands",
+    "answer": 579,
+    "source_text": "According to the WHO, there were an estimated 251 million malaria cases (95% of global cases) and 579,414 malaria deaths (97% of global deaths) in African Union Member States in 2023.",
+    "source_url": "https://alma2030.org/heads-of-state-and-government/african-union-malaria-progress-reports/2024-africa-malaria-progress-report/",
+    "category": "public-health",
+    "year": 2023,
+    "difficulty": "medium",
+    "id": "b7c9b453-b7d1-49d9-b662-8f4a19b81c8d"
+  },
+  {
+    "question": "What was the worldwide semiconductor industry revenue in 2023?",
+    "units": "billion dollars",
+    "answer": 533,
+    "source_text": "Worldwide semiconductor revenue in 2023 totaled $533 billion, a decrease of 11.1% from 2022, according to preliminary results by Gartner, Inc.",
+    "source_url": "https://www.gartner.com/en/newsroom/press-releases/2024-01-16-gartner-says-worldwide-semiconductor-revenue-declined-11-percent-in-2023",
+    "category": "technology",
+    "year": 2023,
+    "difficulty": "hard",
+    "id": "6fda8130-a1fb-4eba-aea6-ada4d5f33132"
+  },
+  {
+    "question": "How many billion layer hens worldwide were kept in battery cages in 2023?",
+    "units": "billion",
+    "answer": 3.33,
+    "source_text": "In total, there are 3.84 billion laying hens worldwide. Within this data, 440 million hens are non-caged (constituting 11.6%), 3.33 billion are caged using the layer battery cage (constituting 86.7%).",
+    "source_url": "https://www.dfopoultry.com/a-type-layer-cages/",
+    "category": "animal-welfare",
+    "year": 2023,
+    "difficulty": "hard",
+    "id": "49c96341-c869-4450-aa34-3bfd648778c8"
+  }
+]

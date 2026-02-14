@@ -54,3 +54,26 @@ Scratchpad for tracking changes made to the codebase. Update this file after eve
 - `src/components/GameHeader.tsx'`
 
 **Files unchanged:** `page.tsx` (API unchanged — `calculateScore` still takes same args), `FeedbackCard.tsx`, `QuestionCard.tsx`, `types.ts`, `parseAnswer.ts`, `utils.ts`
+
+---
+
+### Add LLM question generation pipeline
+
+**Motivation:** Questions currently come from a static `fermidata.json` sourced from a GitHub repo. Added a standalone Node.js script that uses the Anthropic API with web search to generate high-quality, source-backed estimation questions. Separate from the Next.js app code since it's a build-time utility, not a runtime dependency.
+
+**Changes:**
+
+- `scripts/generate-questions/generate-questions.js` — New. Node.js script that calls Claude (claude-sonnet-4-5-20250929) with web search enabled to generate Fermi estimation questions in batches of 5. Includes: exponential backoff retry logic, JSON extraction with fallback parsing, schema validation, deduplication, incremental JSONL output, and final `questions.json` assembly. Configurable total via CLI arg (default 100).
+
+- `scripts/generate-questions/prompt-template.txt` — New. System prompt instructing Claude to only use web-searched data from authoritative sources (Our World in Data, World Bank, etc.). Defines 8 question categories, 3 difficulty levels, output JSON schema, and includes 10 example questions spanning different categories.
+
+- `package.json` — Added `@anthropic-ai/sdk` dependency.
+
+**New question schema** (different from existing `fermidata.json`):
+```json
+{ "id", "question", "units", "answer" (numeric), "source_text", "source_url", "category", "year", "difficulty" }
+```
+
+**Usage:** `ANTHROPIC_API_KEY=... node scripts/generate-questions/generate-questions.js [N]`
+
+**Files unchanged:** All `src/` files, `public/fermidata.json`
