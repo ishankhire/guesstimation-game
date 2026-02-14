@@ -2,25 +2,196 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1a1a1a;
+  --accent: #5B5FEF;
+  --accent-light: #7B7FFF;
+  --surface: #f5f5f5;
+  --surface-light: #eeeeee;
+  --success: #22c55e;
+  --danger: #ef4444;
+  --muted: #6b7280;
+  --border: #d1d5db;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-surface: var(--surface);
+  --color-surface-light: var(--surface-light);
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Confidence bar — inline row of options */
+.confidence-bar {
+  display: inline-flex;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.confidence-bar button {
+  padding: 0.4rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: none;
+  border-right: 1px solid var(--border);
+  background: var(--background);
+  color: var(--foreground);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.confidence-bar button:last-child {
+  border-right: none;
+}
+
+.confidence-bar button:hover {
+  background: var(--surface);
+}
+
+.confidence-bar button.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Bound input group — 10^ [input] unit */
+.bound-group {
+  display: flex;
+  align-items: stretch;
+  border: 1.5px solid var(--accent);
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--background);
+}
+
+.bound-group .prefix,
+.bound-group .suffix {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+  background: var(--surface);
+  white-space: nowrap;
+}
+
+.bound-group input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 0.6rem 0.75rem;
+  font-size: 1rem;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  color: var(--foreground);
+  background: var(--background);
+  min-width: 0;
+}
+
+.bound-group input::placeholder {
+  color: var(--border);
+}
+
+/* Submit button */
+.submit-btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.6rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: var(--accent-light);
+}
+
+.submit-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Timer pulse */
+@keyframes pulse-red {
+
+  0%,
+  100% {
+    color: var(--danger);
+  }
+
+  50% {
+    color: rgba(239, 68, 68, 0.4);
+  }
+}
+
+.timer-critical {
+  animation: pulse-red 0.8s ease-in-out infinite;
+}
+
+/* Feedback slide-in */
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.feedback-card {
+  animation: slide-up 0.3s ease-out;
+}
+
+/* Start/end screen button */
+.play-btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.85rem 2.5rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.play-btn:hover {
+  background: var(--accent-light);
+}
+
+/* Card for feedback / start */
+.card {
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+/* Number input hide arrows */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
 }
