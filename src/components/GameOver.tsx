@@ -5,7 +5,7 @@ interface GameOverProps {
 }
 
 export default function GameOver({ score, totalQuestions, onPlayAgain }: GameOverProps) {
-  const maxPossible = totalQuestions * 200;
+  const maxPossible = totalQuestions * 10; // smax = 10 per question (Greenberg 2018)
   const percentage = Math.max(0, Math.round((score / maxPossible) * 100));
 
   return (

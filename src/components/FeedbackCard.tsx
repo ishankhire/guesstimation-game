@@ -58,7 +58,7 @@ export default function FeedbackCard({
             style={{ color: feedbackData.points >= 0 ? "var(--success)" : "var(--danger)" }}
           >
             {feedbackData.points > 0 ? "+" : ""}
-            {feedbackData.points}
+            {feedbackData.points.toFixed(2)}
           </p>
         </div>
       </div>
