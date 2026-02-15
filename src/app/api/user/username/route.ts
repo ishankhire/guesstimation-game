@@ -32,5 +32,14 @@ export async function POST(req: Request) {
     data: { username },
   });
 
-  return NextResponse.json({ success: true });
+  const response = NextResponse.json({ success: true });
+  // Set cookie so middleware knows username exists (avoids DB lookup in Edge)
+  response.cookies.set("has-username", "1", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    path: "/",
+    maxAge: 60 * 60 * 24 * 365, // 1 year
+  });
+  return response;
 }

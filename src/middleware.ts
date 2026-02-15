@@ -1,12 +1,12 @@
-import { auth } from "@/lib/auth";
 import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
-export default auth((req) => {
+export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
-  // Allow auth routes, static assets, and public data
+  // Allow auth routes, static assets, API routes, and public data
   if (
-    pathname.startsWith("/api/auth") ||
+    pathname.startsWith("/api") ||
     pathname.startsWith("/auth") ||
     pathname.startsWith("/_next") ||
     pathname === "/favicon.ico"
@@ -14,27 +14,31 @@ export default auth((req) => {
     return NextResponse.next();
   }
 
-  // Not signed in — allow through (anonymous play is permitted)
-  if (!req.auth) {
+  // Check for NextAuth session token cookie (JWT strategy)
+  const hasSession =
+    req.cookies.has("authjs.session-token") ||
+    req.cookies.has("__Secure-authjs.session-token");
+
+  // Not signed in — allow through (anonymous play)
+  if (!hasSession) {
     return NextResponse.next();
   }
 
+  // Signed in — check for username cookie we set after username selection
+  const hasUsername = req.cookies.has("has-username");
+
   // Signed in but no username — redirect to username page
-  if (
-    !req.auth.user.username &&
-    pathname !== "/username" &&
-    !pathname.startsWith("/api/user/username")
-  ) {
+  if (!hasUsername && pathname !== "/username") {
     return NextResponse.redirect(new URL("/username", req.url));
   }
 
   // Has username but trying to access /username page — redirect to game
-  if (req.auth.user.username && pathname === "/username") {
+  if (hasUsername && pathname === "/username") {
     return NextResponse.redirect(new URL("/", req.url));
   }
 
   return NextResponse.next();
-});
+}
 
 export const config = {
   matcher: ["/((?!_next/static|_next/image|favicon.ico|questions.json).*)"],

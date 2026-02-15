@@ -18,6 +18,7 @@ declare module "next-auth" {
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(prisma),
+  session: { strategy: "jwt" },
   providers: [
     Google({
       clientId: process.env.GOOGLE_CLIENT_ID!,
@@ -25,14 +26,26 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     }),
   ],
   callbacks: {
-    async session({ session, user }) {
-      session.user.id = user.id;
-      const dbUser = await prisma.user.findUnique({
-        where: { id: user.id },
-        select: { username: true, rating: true },
-      });
-      session.user.username = dbUser?.username ?? null;
-      session.user.rating = dbUser?.rating ?? 1000;
+    async jwt({ token, user }) {
+      // On initial sign-in, user object is available
+      if (user) {
+        token.id = user.id;
+      }
+      // Fetch username and rating from DB on every token refresh
+      if (token.id) {
+        const dbUser = await prisma.user.findUnique({
+          where: { id: token.id as string },
+          select: { username: true, rating: true },
+        });
+        token.username = dbUser?.username ?? null;
+        token.rating = dbUser?.rating ?? 1000;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      session.user.id = token.id as string;
+      session.user.username = (token.username as string) ?? null;
+      session.user.rating = (token.rating as number) ?? 1000;
       return session;
     },
   },

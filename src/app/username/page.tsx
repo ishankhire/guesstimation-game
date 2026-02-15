@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 
@@ -10,9 +10,9 @@ export default function UsernamePage() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const { update } = useSession();
+  const autoSubmitted = useRef(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const saveUsername = async (name: string) => {
     setError("");
     setLoading(true);
 
@@ -20,7 +20,7 @@ export default function UsernamePage() {
       const res = await fetch("/api/user/username", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username }),
+        body: JSON.stringify({ username: name }),
       });
 
       const data = await res.json();
@@ -30,7 +30,7 @@ export default function UsernamePage() {
         return;
       }
 
-      // Refresh session so middleware sees the username
+      localStorage.removeItem("pendingUsername");
       await update();
       router.push("/");
       router.refresh();
@@ -38,6 +38,23 @@ export default function UsernamePage() {
       setError("Something went wrong. Please try again.");
       setLoading(false);
     }
+  };
+
+  // Auto-submit if a pending username was stored before OAuth
+  useEffect(() => {
+    if (autoSubmitted.current) return;
+    const pending = localStorage.getItem("pendingUsername");
+    if (pending) {
+      autoSubmitted.current = true;
+      setUsername(pending);
+      saveUsername(pending);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    await saveUsername(username);
   };
 
   const isValid =
@@ -48,7 +65,7 @@ export default function UsernamePage() {
       <div className="flex flex-col items-center gap-6 text-center max-w-md">
         <h1 className="text-2xl font-bold">Choose a Username</h1>
         <p className="text-muted text-sm">
-          4–17 characters: letters, numbers, and underscores
+          4-17 characters: letters, numbers, and underscores
         </p>
         <form onSubmit={handleSubmit} className="w-full space-y-4">
           <input

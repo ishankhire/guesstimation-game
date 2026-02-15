@@ -1,4 +1,7 @@
-import { signOut } from "next-auth/react";
+"use client";
+
+import { useState } from "react";
+import { signIn, signOut } from "next-auth/react";
 import { type ConfidenceLevel } from "@/lib/scoring";
 
 const CONFIDENCE_LEVELS: ConfidenceLevel[] = [50, 60, 70, 80, 90];
@@ -26,29 +29,100 @@ export default function GameHeader({
   username,
   isAuthenticated,
 }: GameHeaderProps) {
+  const [usernameInput, setUsernameInput] = useState("");
+  const [showUsernameForm, setShowUsernameForm] = useState(false);
+
+  const isValidUsername =
+    usernameInput.length >= 4 &&
+    usernameInput.length <= 17 &&
+    /^[a-zA-Z0-9_]+$/.test(usernameInput);
+
+  const handleSignIn = () => {
+    if (!isValidUsername) return;
+    // Store username in localStorage so /username page can auto-apply it
+    localStorage.setItem("pendingUsername", usernameInput);
+    signIn("google", { callbackUrl: "/" });
+  };
+
   return (
     <div className="flex items-start justify-between gap-4 flex-wrap">
-      {/* Score + Rating */}
+      {/* Rating + User */}
       <div>
-        {username && (
-          <div className="text-xs font-medium text-muted mb-1">{username}</div>
-        )}
-        <div className="text-sm font-semibold" style={{ color: "var(--accent)" }}>
-          Rating:
-        </div>
-        <div className="text-2xl font-bold">
-          {Math.round(rating)}
+        <div className="flex items-baseline gap-2">
+          <div>
+            <div className="text-sm font-semibold" style={{ color: "var(--accent)" }}>
+              Rating:
+            </div>
+            <div className="text-2xl font-bold">
+              {Math.round(rating)}
+            </div>
+          </div>
+          {username && (
+            <div className="text-sm font-medium text-muted ml-1">
+              {username}
+            </div>
+          )}
         </div>
         <div className="text-xs text-muted mt-1">
           Score: {score.toFixed(2)}
         </div>
-        {isAuthenticated && (
+        {isAuthenticated ? (
           <button
             onClick={() => signOut({ callbackUrl: "/" })}
             className="text-xs text-muted hover:underline mt-1"
           >
             Sign out
           </button>
+        ) : !showUsernameForm ? (
+          <button
+            onClick={() => setShowUsernameForm(true)}
+            className="mt-2 px-3 py-1.5 rounded text-sm font-semibold"
+            style={{ background: "var(--accent)", color: "#fff" }}
+          >
+            Sign in
+          </button>
+        ) : (
+          <div className="mt-2 flex flex-col gap-2">
+            <input
+              type="text"
+              value={usernameInput}
+              onChange={(e) => setUsernameInput(e.target.value)}
+              placeholder="Choose a username"
+              maxLength={17}
+              className="px-2 py-1.5 rounded text-sm w-44"
+              style={{
+                border: "1.5px solid var(--border)",
+                background: "var(--background)",
+                color: "var(--foreground)",
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") handleSignIn();
+              }}
+            />
+            {usernameInput.length > 0 && !isValidUsername && (
+              <div className="text-xs" style={{ color: "var(--danger)" }}>
+                4–17 chars, letters/numbers/_
+              </div>
+            )}
+            <button
+              onClick={handleSignIn}
+              disabled={!isValidUsername}
+              className="px-3 py-1.5 rounded text-sm font-semibold"
+              style={{
+                background: isValidUsername ? "var(--accent)" : "var(--surface)",
+                color: isValidUsername ? "#fff" : "var(--muted)",
+                cursor: isValidUsername ? "pointer" : "not-allowed",
+              }}
+            >
+              Sign in with Google
+            </button>
+            <button
+              onClick={() => setShowUsernameForm(false)}
+              className="text-xs text-muted hover:underline"
+            >
+              Cancel
+            </button>
+          </div>
         )}
       </div>
 
