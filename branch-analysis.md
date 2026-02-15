@@ -77,3 +77,70 @@ Scratchpad for tracking changes made to the codebase. Update this file after eve
 **Usage:** `ANTHROPIC_API_KEY=... node scripts/generate-questions/generate-questions.js [N]`
 
 **Files unchanged:** All `src/` files, `public/fermidata.json`
+
+---
+
+### Switch game to use generated questions.json with source attribution
+
+**Motivation:** Replace the old `fermidata.json` (string answers, no sources) with the new AI-generated `questions.json` (numeric answers, units, source text/URL). Show source attribution on the feedback screen after answering.
+
+**Changes:**
+
+- `src/lib/types.ts` — `FermiQuestion.answer` changed from `string` to `number`. Added fields: `units`, `source_text`, `source_url`, `category`, `year`, `difficulty`. `FeedbackData` updated to include `units`, `source_text`, `source_url` and `rawAnswer` changed from `string` to `number`.
+
+- `src/lib/parseAnswer.ts` — Simplified. Removed `parseAnswerRaw` and `extractUnit` (no longer needed since answers are numeric and units are a separate field). `answerToExponent` now takes `number` directly.
+
+- `src/lib/utils.ts` — `formatAnswer` now takes `number` instead of `string`. Removed `parseAnswerRaw` import.
+
+- `src/app/page.tsx` — Fetches `/questions.json` instead of `/fermidata.json`. Removed `parseAnswerRaw`/`extractUnit` imports. Validation simplified to `!isNaN(q.answer) && q.answer > 0`. Unit extracted from `currentQuestion.units`. FeedbackData now includes `units`, `source_text`, `source_url`.
+
+- `src/components/FeedbackCard.tsx` — Shows units next to the true answer. Added source section below the interval display: source text and a clickable source URL link.
+
+- `public/questions.json` — New. Copied from `scripts/generate-questions/questions.json`.
+
+**Files unchanged:** `scoring.ts`, `globals.css`, `layout.tsx`, `GameHeader.tsx`, `QuestionCard.tsx`, `GameOver.tsx`
+
+---
+
+### Adaptive input UI: plain numbers for normal-range questions, scientific notation for extreme
+
+**Motivation:** Entering `10^X` exponents for questions like "How many countries are in the UN?" (answer: 193) is clumsy. For answers in the normal range (0.01–9,999), a plain number input is more natural. Scientific notation is only useful for very large/small answers.
+
+**Rules:**
+- If answer exponent is in `[-2, 4]` (i.e. answer between 0.01 and 9,999): plain number input per bound, no prefix.
+- Otherwise: two inputs per bound — `a` (decimal coefficient) and `b` (integer exponent), representing `a × 10^b`. The `b` field rejects decimals with an inline error message.
+
+**Changes:**
+
+- `src/components/QuestionCard.tsx` — Refactored. New internal `BoundInput` component handles both modes. In scientific mode, renders two `<input>` elements with a `× 10^` label between them. Integer validation for the exponent field: shows "Exponent must be an integer" error on decimal input.
+
+- `src/app/page.tsx` — Added state for plain bounds (`lowerPlain`, `upperPlain`) and scientific bounds (`lowerCoeff`, `lowerExp`, `upperCoeff`, `upperExp`) plus error strings. Added `isScientificMode()` helper (mirrors `DISTANCE_EXP_MIN/MAX` from scoring). `canSubmit` logic varies by mode. `handleSubmit` converts inputs to actual values, then to `log10` for scoring. Added `submittedLower`/`submittedUpper`/`submittedScientific` state to pass actual numeric bounds to FeedbackCard.
+
+- `src/components/FeedbackCard.tsx` — Prop change: replaced `lowerBound: string` / `upperBound: string` with `lowerValue: number | null` / `upperValue: number | null` / `useScientific: boolean`. Interval display uses `toExponential(2)` in scientific mode, `formatAnswer` in plain mode.
+
+**Files unchanged:** `scoring.ts`, `parseAnswer.ts`, `utils.ts`, `types.ts`, `globals.css`, `layout.tsx`, `GameHeader.tsx`, `GameOver.tsx`
+
+---
+
+### Add dual scoring: Distance rule for normal magnitudes, OoM for extreme
+
+**Motivation:** With the new `questions.json`, answers span from 1 to 1.7×10^14. Questions with "normal" answers (e.g. 54 countries, 98.6°F) are poorly served by the OoM rule since linear differences are more meaningful at that scale. The Distance rule (Greenberg 2018, Section 9.1.1) is designed for exactly this case.
+
+**Answer distribution analysis:**
+- 10^0 to 10^2: 69 questions (58%) — normal range (countries, temperatures, percentages)
+- 10^3 to 10^5: 6 questions — moderate
+- 10^6+: 45 questions — large (populations, budgets, distances)
+
+**Rule selection threshold:** `trueExp ∈ [-2, 4]` → Distance rule; otherwise → OoM rule. This covers answers from 0.01 to 9,999.
+
+**Distance rule (Section 9.1.1):**
+- r, s, t are linear differences divided by c=100
+- Interval expansion is additive: L−δ, U+δ (δ=0.4)
+- Same core piecewise formula as OoM (Section 9.2)
+- Same smax=10, smin=−57.269 floor (Section 9.3/9.4)
+
+**Changes:**
+
+- `src/lib/scoring.ts` — Added `scoreDistance()` function (linear r/s/t, c=100, additive expansion). Split `C` constant into `C_DISTANCE=100` and `C_OOM=ln(100)`. Added `DISTANCE_EXP_MIN=-2` and `DISTANCE_EXP_MAX=4` threshold constants. `calculateScore()` now checks `trueExp` against threshold to select rule.
+
+**Files unchanged:** All other files — `calculateScore` API signature unchanged

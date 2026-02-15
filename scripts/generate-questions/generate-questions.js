@@ -6,8 +6,8 @@ const path = require("path");
 const crypto = require("crypto");
 
 // --- Configuration ---
-const MODEL = "claude-sonnet-4-5-20250929";
-const BATCH_SIZE = 5;
+const MODEL = "claude-haiku-4-5-20251001";
+const BATCH_SIZE = 10;
 const MAX_RETRIES = 5;
 const VALID_CATEGORIES = new Set([
   "global-development",
@@ -102,36 +102,26 @@ async function withRetry(fn) {
 }
 
 async function generateBatch(client, systemPrompt, seenQuestions) {
-  // Build user message with dedup context
-  let userMessage = `Generate exactly ${BATCH_SIZE} new Fermi estimation questions. Search the web for each answer — do not use any numbers from memory.`;
+  let userMessage = `Generate exactly ${BATCH_SIZE} new Fermi estimation questions.`;
 
   if (seenQuestions.length > 0) {
     const recent = seenQuestions.slice(-15).map((q) => q.question);
     userMessage += `\n\nAvoid duplicating these recently generated questions:\n${recent.map((q) => `- ${q}`).join("\n")}`;
   }
 
-  // web_search_20250305 is a server-side tool — the API handles searches internally
-  // in a single round-trip. Response contains server_tool_use + web_search_tool_result
-  // blocks alongside text blocks.
   const response = await client.messages.create({
     model: MODEL,
     max_tokens: 16000,
     system: systemPrompt,
-    tools: [{ type: "web_search_20250305", name: "web_search" }],
     messages: [{ role: "user", content: userMessage }],
   });
 
-  // Find the last text block in the response (the final answer after all searches)
-  const textBlocks = response.content.filter((block) => block.type === "text");
-  if (textBlocks.length === 0) {
-    // Debug: log what block types we got
-    const types = response.content.map((b) => b.type).join(", ");
-    throw new Error(`No text block in API response. Block types: ${types}`);
+  const textBlock = response.content.find((block) => block.type === "text");
+  if (!textBlock) {
+    throw new Error("No text block in API response");
   }
 
-  // Use the last text block — earlier ones may be intermediate reasoning
-  const text = textBlocks[textBlocks.length - 1].text;
-  return extractJsonArray(text);
+  return extractJsonArray(textBlock.text);
 }
 
 // --- Main ---
@@ -198,12 +188,10 @@ async function main() {
       console.error("Continuing to next batch...");
     }
 
-    // Delay between batches to respect rate limits.
-    // With low-tier limits (~10k input tokens/min), each batch uses ~5k tokens,
-    // so we need ~30s between batches to stay under the limit.
+    // Delay between batches to respect rate limits
     if (batch < totalBatches - 1) {
-      const delay = 35000;
-      console.log(`  Waiting ${delay / 1000}s before next batch (rate limit pacing)...`);
+      const delay = 5000;
+      console.log(`  Waiting ${delay / 1000}s before next batch...`);
       await sleep(delay);
     }
   }

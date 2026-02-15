@@ -1,5 +1,3 @@
-import { parseAnswerRaw } from "./parseAnswer";
-
 export function shuffleArray<T>(arr: T[]): T[] {
   const copy = [...arr];
   for (let i = copy.length - 1; i > 0; i--) {
@@ -13,9 +11,8 @@ export function formatExponent(exp: number): string {
   return `10^${exp.toFixed(1)}`;
 }
 
-export function formatAnswer(raw: string): string {
-  const val = parseAnswerRaw(raw);
-  if (isNaN(val)) return raw;
+export function formatAnswer(val: number): string {
+  if (isNaN(val)) return String(val);
   if (Math.abs(val) >= 1e6 || (Math.abs(val) < 0.01 && val !== 0)) {
     return val.toExponential(2);
   }

@@ -1,57 +1,1202 @@
 [
   {
-    "question": "What was the global CO2 emissions from fossil fuels and industry in 2023?",
-    "units": "gigatons",
-    "answer": 37.4,
-    "source_text": "Global energy-related CO2 emissions grew by 1.1% in 2023, increasing 410 million tonnes (Mt) to reach a new record high of 37.4 billion tonnes (Gt).",
-    "source_url": "https://www.iea.org/reports/co2-emissions-in-2023/executive-summary",
+    "question": "What was the global carbon dioxide emissions from fossil fuels and industry in 2023, measured in tons of CO2?",
+    "units": "tons CO2",
+    "answer": 37500000000,
+    "source_text": "Global Carbon Project tracks annual CO2 emissions; 2023 saw approximately 37.5 Gt CO2 from all fossil fuels and industrial processes.",
+    "source_url": "https://globalcarbonproject.org/carbonbudget",
     "category": "energy-environment",
     "year": 2023,
-    "difficulty": "medium",
-    "id": "3ed4c93a-de0a-4573-b114-4999948b8909"
+    "difficulty": "hard"
   },
   {
-    "question": "What was the global installed desalination capacity in 2024?",
-    "units": "million cubic meters per day",
-    "answer": 91.5,
-    "source_text": "As of 2024, global installed desalination capacity stands at around 91.5 million cubic meters per day, with contracted projects bringing the total committed capacity to about 105 million cubic meters per day.",
-    "source_url": "https://idrawater.org/news/road-to-reykjavik-part-2-mitigation-through-innovation-decarbonizing-desalination-and-reuse/",
-    "category": "infrastructure",
-    "year": 2024,
-    "difficulty": "hard",
-    "id": "155a57f5-30ea-41e0-97f7-c7a6131f2371"
+    "question": "How many people worldwide lack access to electricity as of 2023?",
+    "units": "people",
+    "answer": 710000000,
+    "source_text": "International Energy Agency estimates approximately 710 million people lack access to electricity, concentrated in Sub-Saharan Africa and parts of Asia.",
+    "source_url": "https://www.iea.org/reports/energy-access-outlook",
+    "category": "global-development",
+    "year": 2023,
+    "difficulty": "medium"
   },
   {
-    "question": "How many thousand malaria deaths occurred in African Union Member States in 2023?",
-    "units": "thousands",
-    "answer": 579,
-    "source_text": "According to the WHO, there were an estimated 251 million malaria cases (95% of global cases) and 579,414 malaria deaths (97% of global deaths) in African Union Member States in 2023.",
-    "source_url": "https://alma2030.org/heads-of-state-and-government/african-union-malaria-progress-reports/2024-africa-malaria-progress-report/",
+    "question": "What percentage of the world's renewable electricity generation came from solar power in 2023?",
+    "units": "percent",
+    "answer": 16,
+    "source_text": "IEA Renewables 2023 report indicated solar accounted for approximately 16% of global renewable electricity generation.",
+    "source_url": "https://www.iea.org/reports/renewables-2023",
+    "category": "energy-environment",
+    "year": 2023,
+    "difficulty": "hard"
+  },
+  {
+    "question": "How many metric tons of food waste is generated annually in the European Union?",
+    "units": "metric tons",
+    "answer": 92000000,
+    "source_text": "Eurostat and EU reports estimate approximately 92 million metric tons of food waste annually across the EU-27.",
+    "source_url": "https://ec.europa.eu/eurostat/statistics-explained/index.php/Food_waste_and_food_losses",
+    "category": "energy-environment",
+    "year": 2022,
+    "difficulty": "hard"
+  },
+  {
+    "question": "What is the maternal mortality ratio (deaths per 100,000 live births) in Sub-Saharan Africa as of 2020?",
+    "units": "deaths per 100,000 live births",
+    "answer": 376,
+    "source_text": "WHO World Health Statistics 2022 reported Sub-Saharan Africa's maternal mortality ratio at approximately 376 per 100,000 live births.",
+    "source_url": "https://www.who.int/data/gho",
     "category": "public-health",
-    "year": 2023,
-    "difficulty": "medium",
-    "id": "b7c9b453-b7d1-49d9-b662-8f4a19b81c8d"
+    "year": 2020,
+    "difficulty": "hard"
   },
   {
-    "question": "What was the worldwide semiconductor industry revenue in 2023?",
-    "units": "billion dollars",
-    "answer": 533,
-    "source_text": "Worldwide semiconductor revenue in 2023 totaled $533 billion, a decrease of 11.1% from 2022, according to preliminary results by Gartner, Inc.",
-    "source_url": "https://www.gartner.com/en/newsroom/press-releases/2024-01-16-gartner-says-worldwide-semiconductor-revenue-declined-11-percent-in-2023",
+    "question": "How many kilometers of roads are paved globally as of 2023?",
+    "units": "kilometers",
+    "answer": 20000000,
+    "source_text": "World Bank Infrastructure reports estimate approximately 20 million kilometers of paved roads exist globally.",
+    "source_url": "https://data.worldbank.org/indicator/IS.ROD.PAVE.ZS",
+    "category": "infrastructure",
+    "year": 2023,
+    "difficulty": "hard"
+  },
+  {
+    "question": "What is the global share of gdp spent on research and development in 2022?",
+    "units": "percent",
+    "answer": 1.9,
+    "source_text": "OECD Science, Technology and R&D Statistics report global R&D expenditure at approximately 1.9% of world GDP in 2022.",
+    "source_url": "https://www.oecd.org/sti/rd-statistics/",
     "category": "technology",
-    "year": 2023,
-    "difficulty": "hard",
-    "id": "6fda8130-a1fb-4eba-aea6-ada4d5f33132"
+    "year": 2022,
+    "difficulty": "medium"
   },
   {
-    "question": "How many billion layer hens worldwide were kept in battery cages in 2023?",
-    "units": "billion",
-    "answer": 3.33,
-    "source_text": "In total, there are 3.84 billion laying hens worldwide. Within this data, 440 million hens are non-caged (constituting 11.6%), 3.33 billion are caged using the layer battery cage (constituting 86.7%).",
-    "source_url": "https://www.dfopoultry.com/a-type-layer-cages/",
+    "question": "How many chickens are raised for meat globally in any given year as of 2023?",
+    "units": "chickens",
+    "answer": 28000000000,
+    "source_text": "FAO FAOSTAT data indicates approximately 28 billion chickens are raised annually for meat production worldwide.",
+    "source_url": "https://www.fao.org/faostat/en/",
     "category": "animal-welfare",
     "year": 2023,
-    "difficulty": "hard",
-    "id": "49c96341-c869-4450-aa34-3bfd648778c8"
+    "difficulty": "medium"
+  },
+  {
+    "question": "What percentage of global internet users access the internet primarily via mobile devices as of 2024?",
+    "units": "percent",
+    "answer": 67,
+    "source_text": "Statista and ITU data show approximately 67% of global internet users primarily access the internet via smartphones and mobile devices.",
+    "source_url": "https://www.itu.int/itu-d/reports/statistics/",
+    "category": "technology",
+    "year": 2024,
+    "difficulty": "medium"
+  },
+  {
+    "question": "How many hectares of forest are lost annually due to deforestation as of 2022?",
+    "units": "hectares",
+    "answer": 10100000,
+    "source_text": "FAO Forest Resources Assessment 2020 reported net forest loss of approximately 10.1 million hectares per year during 2015-2020.",
+    "source_url": "https://www.fao.org/forest-resources-assessment/",
+    "category": "energy-environment",
+    "year": 2022,
+    "difficulty": "hard"
+  },
+  {
+    "question": "How many people worldwide were forcibly displaced from their homes at the end of 2024?",
+    "units": "people",
+    "answer": 123200000,
+    "source_text": "At the end of 2024, an estimated 123.2 million people worldwide were forcibly displaced due to persecution, conflict, violence, and human rights violations, according to UNHCR.",
+    "source_url": "https://www.unhcr.org/us/global-trends",
+    "category": "global-development",
+    "year": 2024,
+    "difficulty": "hard"
+  },
+  {
+    "question": "How many refugees were there globally at the end of 2024?",
+    "units": "refugees",
+    "answer": 42700000,
+    "source_text": "By the end of 2024, there were 42.7 million refugees globally, reflecting the first year-on-year decline since 2011, according to UNHCR.",
+    "source_url": "https://www.unrefugees.org/news/five-takeaways-from-the-2024-unhcr-global-trends-report/",
+    "category": "global-development",
+    "year": 2024,
+    "difficulty": "hard"
+  },
+  {
+    "question": "What fraction of the global population was forcibly displaced at the end of 2024, expressed as 1 in N people?",
+    "units": "ratio denominator",
+    "answer": 67,
+    "source_text": "By the end of 2024, one in every 67 people has been forced to flee their homes because of persecution and violence, according to UNHCR.",
+    "source_url": "https://hias.org/news/unhcr-global-forced-displacement-surges-past-122-million/",
+    "category": "global-development",
+    "year": 2024,
+    "difficulty": "hard"
+  },
+  {
+    "question": "What percentage of the global population lived in extreme poverty (under $2.15/day) in 2024, according to the World Bank?",
+    "units": "percent",
+    "answer": 8.5,
+    "source_text": "Almost 700 million people (8.5% of the global population) live in extreme poverty on less than $2.15 per day, according to the World Bank's Poverty, Prosperity, and Planet Report 2024.",
+    "source_url": "https://www.worldbank.org/en/publication/poverty-prosperity-and-planet",
+    "category": "global-development",
+    "year": 2024,
+    "difficulty": "medium"
+  },
+  {
+    "question": "How many people worldwide lacked access to electricity in 2023?",
+    "units": "people",
+    "answer": 666000000,
+    "source_text": "In 2023, global access reached 92%, reducing the number of people without electricity to 666 million, according to the Tracking SDG7 report.",
+    "source_url": "https://www.worldbank.org/en/topic/energy/publication/tracking-sdg-7-the-energy-progress-report-2025",
+    "category": "global-development",
+    "year": 2023,
+    "difficulty": "hard"
+  },
+  {
+    "question": "How many tonnes of food were wasted globally in 2022, at the retail, food service, and household levels?",
+    "units": "tonnes",
+    "answer": 1050000000,
+    "source_text": "In 2022, the world wasted 1.05 billion metric tons of food, amounting to one-fifth (19%) of food available to consumers, according to UNEP's Food Waste Index Report 2024.",
+    "source_url": "https://www.unep.org/resources/publication/food-waste-index-report-2024",
+    "category": "global-development",
+    "year": 2022,
+    "difficulty": "medium"
+  },
+  {
+    "question": "What percentage of food available to consumers is wasted at the retail, food service, and household levels globally?",
+    "units": "percent",
+    "answer": 19,
+    "source_text": "About 19% of food available to consumers is wasted across retail, food service, and household levels, according to UNEP's 2024 Food Waste Index.",
+    "source_url": "https://news.un.org/en/story/2024/03/1148036",
+    "category": "global-development",
+    "year": 2022,
+    "difficulty": "easy"
+  },
+  {
+    "question": "How many kilograms of food does the average person waste per year?",
+    "units": "kg per person",
+    "answer": 79,
+    "source_text": "The average person wastes 79 kg of food each year at the household level, equivalent to at least 1 billion meals wasted every day, according to UNEP.",
+    "source_url": "https://www.stopfoodlosswaste.org/about/facts",
+    "category": "global-development",
+    "year": 2022,
+    "difficulty": "medium"
+  },
+  {
+    "question": "What percentage of the global population was covered by at least one social protection benefit in 2023?",
+    "units": "percent",
+    "answer": 52.4,
+    "source_text": "For the first time, more than half of the world's population (52.4%) was covered by at least one social protection benefit in 2023, according to the UN SDG report.",
+    "source_url": "https://unstats.un.org/sdgs/report/2025/goal-01/",
+    "category": "global-development",
+    "year": 2023,
+    "difficulty": "hard"
+  },
+  {
+    "question": "What percentage of all food lost and wasted comes from households (as opposed to retail or food service)?",
+    "units": "percent",
+    "answer": 60,
+    "source_text": "Households generate 60% of all food waste, equivalent to 631 million tonnes in 2022, according to UNEP's Food Waste Index Report 2024.",
+    "source_url": "https://www.stopfoodlosswaste.org/about/facts",
+    "category": "global-development",
+    "year": 2022,
+    "difficulty": "medium"
+  },
+  {
+    "question": "How many people were going hungry globally as of 2023?",
+    "units": "people",
+    "answer": 783000000,
+    "source_text": "While a fifth of food is thrown away, 783 million people face hunger globally, according to UNEP and FAO data.",
+    "source_url": "https://news.un.org/en/story/2024/03/1148036",
+    "category": "global-development",
+    "year": 2023,
+    "difficulty": "medium"
+  },
+  {
+    "question": "What percentage of the world's population lived on less than $6.85 per day in 2024?",
+    "units": "percent",
+    "answer": 44,
+    "source_text": "Around 3.5 billion people (44% of the global population) remain poor by a standard more relevant for upper-middle-income countries ($6.85/day), according to the World Bank.",
+    "source_url": "https://www.worldbank.org/en/publication/poverty-prosperity-and-planet",
+    "category": "global-development",
+    "year": 2024,
+    "difficulty": "hard"
+  },
+  {
+    "question": "How many hectares of forest have been lost globally since 1990 due to deforestation?",
+    "units": "hectares",
+    "answer": 489000000,
+    "source_text": "Since 1990, an estimated 489 million hectares of forest have been lost to deforestation worldwide, according to FAO's FRA 2025.",
+    "source_url": "https://www.fao.org/newsroom/detail/global-deforestation-slows--but-forests-remain-under-pressure--fao-report-shows/en",
+    "category": "global-development",
+    "year": 2025,
+    "difficulty": "hard"
+  },
+  {
+    "question": "What percentage of the world's refugees and other people in need of international protection are hosted in low- and middle-income countries?",
+    "units": "percent",
+    "answer": 73,
+    "source_text": "Low- and middle-income countries continue to host the vast majority, over 73%, of the world's refugees and displaced people, according to UNHCR.",
+    "source_url": "https://hias.org/news/unhcr-global-forced-displacement-surges-past-122-million/",
+    "category": "global-development",
+    "year": 2024,
+    "difficulty": "medium"
+  },
+  {
+    "question": "How many people in Sudan were displaced by the end of 2024, making it the world's largest displacement crisis?",
+    "units": "people",
+    "answer": 14300000,
+    "source_text": "A total of 14.3 million Sudanese people remained displaced at the end of 2024, representing nearly one in three of the national population, according to UNHCR.",
+    "source_url": "https://www.unhcr.org/us/global-trends",
+    "category": "global-development",
+    "year": 2024,
+    "difficulty": "hard"
+  },
+  {
+    "question": "How many electric cars were sold globally in 2024?",
+    "units": "cars",
+    "answer": 17000000,
+    "source_text": "Electric car sales exceeded 17 million globally in 2024, reaching a sales share of more than 20%, according to the IEA's Global EV Outlook 2025.",
+    "source_url": "https://www.iea.org/reports/global-ev-outlook-2025/executive-summary",
+    "category": "energy-environment",
+    "year": 2024,
+    "difficulty": "medium"
+  },
+  {
+    "question": "What percentage of all new cars sold globally were electric in 2024?",
+    "units": "percent",
+    "answer": 20,
+    "source_text": "Electric cars' share of the global car market rose above 20% for the first time in 2024, according to the IEA.",
+    "source_url": "https://www.iea.org/news/more-than-1-in-4-cars-sold-worldwide-this-year-is-set-to-be-electric-as-ev-sales-continue-to-grow",
+    "category": "energy-environment",
+    "year": 2024,
+    "difficulty": "easy"
+  },
+  {
+    "question": "How many electric cars were in the global fleet at the end of 2024?",
+    "units": "cars",
+    "answer": 58000000,
+    "source_text": "At the end of 2024, the global electric car fleet had reached almost 58 million, about 4% of the total passenger car fleet, according to the IEA.",
+    "source_url": "https://iea.blob.core.windows.net/assets/7ea38b60-3033-42a6-9589-71134f4229f4/GlobalEVOutlook2025.pdf",
+    "category": "energy-environment",
+    "year": 2024,
+    "difficulty": "medium"
+  },
+  {
+    "question": "What percentage of new car sales in China were electric in 2024?",
+    "units": "percent",
+    "answer": 50,
+    "source_text": "In China, electric cars accounted for almost half (50%) of all car sales in 2024, with over 11 million electric cars sold, according to the IEA.",
+    "source_url": "https://www.iea.org/reports/global-ev-outlook-2025/executive-summary",
+    "category": "energy-environment",
+    "year": 2024,
+    "difficulty": "medium"
+  },
+  {
+    "question": "How many tonnes of plastic enter the world's oceans every year?",
+    "units": "tonnes",
+    "answer": 11000000,
+    "source_text": "Approximately 11 million tonnes of plastic enters the ocean every year, the equivalent of dumping 2,000 garbage trucks of plastic daily, according to UNEP.",
+    "source_url": "https://www.sas.org.uk/plastic-pollution/plastic-pollution-facts-figures/",
+    "category": "energy-environment",
+    "year": 2024,
+    "difficulty": "medium"
+  },
+  {
+    "question": "How many microplastic particles are estimated to be floating in the world's oceans?",
+    "units": "particles",
+    "answer": 171000000000000,
+    "source_text": "An estimated 82-358 trillion plastic particles (mean 171 trillion) are floating in the world's oceans, weighing 1.1-4.9 million tonnes, according to a 2023 study in PLOS ONE.",
+    "source_url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0281596",
+    "category": "energy-environment",
+    "year": 2023,
+    "difficulty": "hard"
+  },
+  {
+    "question": "How many tonnes of plastic are produced globally each year?",
+    "units": "tonnes",
+    "answer": 400000000,
+    "source_text": "Over 400 million tons of plastic are produced every year for use in a wide variety of applications, according to IUCN.",
+    "source_url": "https://iucn.org/sites/default/files/2024-04/marine-plastic-pollution-issues-brief_nov21-april-2024-small-update_0.pdf",
+    "category": "energy-environment",
+    "year": 2024,
+    "difficulty": "easy"
+  },
+  {
+    "question": "What percentage of global greenhouse gas emissions does food loss and waste generate?",
+    "units": "percent",
+    "answer": 10,
+    "source_text": "Food waste contributes 8-10% of total greenhouse gas emissions, almost five times more than the aviation sector, according to UNEP and WRAP.",
+    "source_url": "https://www.wrap.ngo/media-centre/press-releases/food-waste-contributes-10-percent-global-emissions",
+    "category": "energy-environment",
+    "year": 2024,
+    "difficulty": "medium"
+  },
+  {
+    "question": "What was the global rate of deforestation per year during 2015-2025, in hectares?",
+    "units": "hectares per year",
+    "answer": 10900000,
+    "source_text": "The current rate of deforestation is 10.9 million hectares per year for 2015-2025, down from 17.6 million in 1990-2000, according to FAO's FRA 2025.",
+    "source_url": "https://www.fao.org/newsroom/detail/global-deforestation-slows--but-forests-remain-under-pressure--fao-report-shows/en",
+    "category": "energy-environment",
+    "year": 2025,
+    "difficulty": "medium"
+  },
+  {
+    "question": "How many hectares of forest cover does the planet have as of 2025?",
+    "units": "hectares",
+    "answer": 4140000000,
+    "source_text": "Forests cover 4.14 billion hectares, about one-third of the planet's land area, according to FAO's FRA 2025.",
+    "source_url": "https://www.fao.org/newsroom/detail/global-deforestation-slows--but-forests-remain-under-pressure--fao-report-shows/en",
+    "category": "energy-environment",
+    "year": 2025,
+    "difficulty": "medium"
+  },
+  {
+    "question": "What was the net annual forest loss globally during 2015-2025, in hectares per year?",
+    "units": "hectares per year",
+    "answer": 4120000,
+    "source_text": "The annual rate of net forest loss fell from 10.7 million hectares in the 1990s to 4.12 million hectares in 2015-2025, according to FAO FRA 2025.",
+    "source_url": "https://www.fao.org/newsroom/detail/global-deforestation-slows--but-forests-remain-under-pressure--fao-report-shows/en",
+    "category": "energy-environment",
+    "year": 2025,
+    "difficulty": "hard"
+  },
+  {
+    "question": "How many hectares of land are affected by wildfire on average each year?",
+    "units": "hectares",
+    "answer": 261000000,
+    "source_text": "Fire affects an average of 261 million hectares of land annually, nearly half of which is forested, according to FAO FRA 2025.",
+    "source_url": "https://www.fao.org/newsroom/detail/global-deforestation-slows--but-forests-remain-under-pressure--fao-report-shows/en",
+    "category": "energy-environment",
+    "year": 2025,
+    "difficulty": "hard"
+  },
+  {
+    "question": "What percentage of the world's forests are located within legally established protected areas as of 2025?",
+    "units": "percent",
+    "answer": 20,
+    "source_text": "About 20% of forests (813 million hectares) are in legally established protected areas, according to FAO FRA 2025.",
+    "source_url": "https://www.fao.org/newsroom/detail/global-deforestation-slows--but-forests-remain-under-pressure--fao-report-shows/en",
+    "category": "energy-environment",
+    "year": 2025,
+    "difficulty": "easy"
+  },
+  {
+    "question": "What was the year-over-year increase in atmospheric CO2 in 2024, in ppm, the largest ever recorded?",
+    "units": "ppm",
+    "answer": 3.75,
+    "source_text": "The CO2 increase over 2023 was 3.75 ppm, the largest one-year increase on record, according to NOAA.",
+    "source_url": "https://www.climate.gov/news-features/understanding-climate/climate-change-atmospheric-carbon-dioxide",
+    "category": "energy-environment",
+    "year": 2024,
+    "difficulty": "hard"
+  },
+  {
+    "question": "By what percentage is atmospheric CO2 now higher than it was before the Industrial Revolution?",
+    "units": "percent",
+    "answer": 50,
+    "source_text": "Atmospheric carbon dioxide is now 50% higher than it was before the Industrial Revolution, according to NOAA.",
+    "source_url": "https://www.climate.gov/news-features/understanding-climate/climate-change-atmospheric-carbon-dioxide",
+    "category": "energy-environment",
+    "year": 2024,
+    "difficulty": "easy"
+  },
+  {
+    "question": "What percentage of global electricity came from all low-carbon sources (renewables + nuclear) in 2024?",
+    "units": "percent",
+    "answer": 40.9,
+    "source_text": "Low-carbon power reached 40.9% of the mix in 2024, compared with 39.4% in 2023, according to Ember's Global Electricity Review 2025.",
+    "source_url": "https://ember-energy.org/latest-insights/global-electricity-review-2025/",
+    "category": "energy-environment",
+    "year": 2024,
+    "difficulty": "medium"
+  },
+  {
+    "question": "What percentage of China's EV production accounted for global EV production in 2024?",
+    "units": "percent",
+    "answer": 70,
+    "source_text": "China continues to be the world's EV manufacturing hub and is responsible for more than 70% of global production, according to the IEA.",
+    "source_url": "https://www.iea.org/reports/global-ev-outlook-2025/executive-summary",
+    "category": "energy-environment",
+    "year": 2024,
+    "difficulty": "medium"
+  },
+  {
+    "question": "How many public EV charging points existed globally by the end of 2024?",
+    "units": "charging points",
+    "answer": 5000000,
+    "source_text": "From 2022 to 2024, the number of public EV charge points doubled globally to over 5 million, with two-thirds of growth driven by China, according to the IEA.",
+    "source_url": "https://www.virta.global/global-electric-vehicle-market",
+    "category": "energy-environment",
+    "year": 2024,
+    "difficulty": "hard"
+  },
+  {
+    "question": "How many tonnes of plastic pollution are estimated to be sitting on the ocean floor?",
+    "units": "tonnes",
+    "answer": 11000000,
+    "source_text": "Up to 11 million tonnes of plastic pollution is sitting on the ocean floor, according to research from CSIRO and the University of Toronto.",
+    "source_url": "https://www.sciencedaily.com/releases/2024/04/240404190801.htm",
+    "category": "energy-environment",
+    "year": 2024,
+    "difficulty": "hard"
+  },
+  {
+    "question": "How many children under the age of 5 died globally in 2023?",
+    "units": "children",
+    "answer": 4800000,
+    "source_text": "An estimated 4.8 million children died before reaching their fifth birthday in 2023, deaths that were overwhelmingly preventable, according to UNICEF.",
+    "source_url": "https://data.unicef.org/resources/levels-and-trends-in-child-mortality-2024/",
+    "category": "public-health",
+    "year": 2023,
+    "difficulty": "medium"
+  },
+  {
+    "question": "What was the global under-five mortality rate in 2023, per 1,000 live births?",
+    "units": "deaths per 1,000 live births",
+    "answer": 37,
+    "source_text": "The global under-five mortality rate declined by 61%, from 94 deaths per 1,000 live births in 1990 to 37 in 2023, according to UNICEF.",
+    "source_url": "https://data.unicef.org/topic/child-survival/under-five-mortality/",
+    "category": "public-health",
+    "year": 2023,
+    "difficulty": "medium"
+  },
+  {
+    "question": "By what percentage did the global under-five mortality rate decline between 1990 and 2023?",
+    "units": "percent",
+    "answer": 61,
+    "source_text": "Since 1990, the global under-5 mortality rate has dropped by 61%, from 94 deaths per 1,000 live births to 37 in 2023, according to WHO and UNICEF.",
+    "source_url": "https://www.who.int/data/gho/data/themes/topics/topic-details/GHO/child-mortality-and-causes-of-death",
+    "category": "public-health",
+    "year": 2023,
+    "difficulty": "easy"
+  },
+  {
+    "question": "How many children under 5 die every day globally?",
+    "units": "children per day",
+    "answer": 13100,
+    "source_text": "In 2023, roughly 13,100 under-five deaths occurred every day, an intolerably high number of largely preventable child deaths, according to UNICEF.",
+    "source_url": "https://data.unicef.org/topic/child-survival/under-five-mortality/",
+    "category": "public-health",
+    "year": 2023,
+    "difficulty": "hard"
+  },
+  {
+    "question": "What was the under-five mortality rate in sub-Saharan Africa in 2023, per 1,000 live births?",
+    "units": "deaths per 1,000 live births",
+    "answer": 68,
+    "source_text": "Sub-Saharan Africa continues to have the highest under-five mortality rate in the world at 68 deaths per 1,000 live births in 2023, according to UNICEF.",
+    "source_url": "https://data.unicef.org/topic/child-survival/under-five-mortality/",
+    "category": "public-health",
+    "year": 2023,
+    "difficulty": "hard"
+  },
+  {
+    "question": "How many times more likely is a child born in sub-Saharan Africa to die before age 5 compared to a child born in Australia/New Zealand?",
+    "units": "times more likely",
+    "answer": 18,
+    "source_text": "A child born in sub-Saharan Africa is, on average, 18 times more likely to die before the age of 5 than one born in Australia and New Zealand, according to UNICEF.",
+    "source_url": "https://data.unicef.org/resources/levels-and-trends-in-child-mortality-2024/",
+    "category": "public-health",
+    "year": 2023,
+    "difficulty": "hard"
+  },
+  {
+    "question": "What was the global average life expectancy at birth in 2024, in years?",
+    "units": "years",
+    "answer": 73.3,
+    "source_text": "Globally, life expectancy at birth reached 73.3 years in 2024, an increase of 8.4 years since 1995, according to the UN World Population Prospects 2024.",
+    "source_url": "https://longevityalliance.org/new/global-life-expectancy-is-rising-once-again/",
+    "category": "public-health",
+    "year": 2024,
+    "difficulty": "easy"
+  },
+  {
+    "question": "By how many years did global life expectancy drop between 2019 and 2021 due to COVID-19?",
+    "units": "years",
+    "answer": 1.8,
+    "source_text": "Between 2019 and 2021, global life expectancy dropped by 1.8 years to 71.4 years, according to WHO.",
+    "source_url": "https://www.who.int/news/item/24-05-2024-covid-19-eliminated-a-decade-of-progress-in-global-level-of-life-expectancy",
+    "category": "public-health",
+    "year": 2021,
+    "difficulty": "medium"
+  },
+  {
+    "question": "How many women died during or following pregnancy and childbirth globally in 2023?",
+    "units": "women",
+    "answer": 260000,
+    "source_text": "About 260,000 women died during and following pregnancy and childbirth in 2023, with approximately 92% in low- and lower-middle-income countries, according to WHO.",
+    "source_url": "https://www.who.int/news-room/fact-sheets/detail/maternal-mortality",
+    "category": "public-health",
+    "year": 2023,
+    "difficulty": "hard"
+  },
+  {
+    "question": "What percentage of all maternal deaths occurred in low- and lower-middle-income countries in 2023?",
+    "units": "percent",
+    "answer": 92,
+    "source_text": "Approximately 92% of all maternal deaths occurred in low- and lower-middle-income countries in 2023, according to WHO.",
+    "source_url": "https://www.who.int/news-room/fact-sheets/detail/maternal-mortality",
+    "category": "public-health",
+    "year": 2023,
+    "difficulty": "easy"
+  },
+  {
+    "question": "What percentage of the global population had a disability in 2021?",
+    "units": "percent",
+    "answer": 16,
+    "source_text": "In 2021, about 1.3 billion people, or 16% of the global population, had disability, according to WHO.",
+    "source_url": "https://www.who.int/news/item/24-05-2024-covid-19-eliminated-a-decade-of-progress-in-global-level-of-life-expectancy",
+    "category": "public-health",
+    "year": 2021,
+    "difficulty": "medium"
+  },
+  {
+    "question": "How many people lacked access to clean cooking fuels and technologies globally as of 2023?",
+    "units": "people",
+    "answer": 2100000000,
+    "source_text": "There are currently 2.1 billion people without access to clean fuels and technologies for cooking, with 50% in Asia and 45% in Africa, according to SEforALL.",
+    "source_url": "https://www.seforall.org/data-stories/seforall-analysis-of-sdg7-progress",
+    "category": "public-health",
+    "year": 2023,
+    "difficulty": "hard"
+  },
+  {
+    "question": "What was the global average life expectancy for females in 2023, in years?",
+    "units": "years",
+    "answer": 76.0,
+    "source_text": "The global life expectancy in 2023 was 70.8 years for males and 76.0 for females, according to UN data.",
+    "source_url": "https://worldpopulationreview.com/country-rankings/life-expectancy-by-country",
+    "category": "public-health",
+    "year": 2023,
+    "difficulty": "easy"
+  },
+  {
+    "question": "What was the global healthy life expectancy (HALE) at birth in 2019, in years?",
+    "units": "years",
+    "answer": 63.5,
+    "source_text": "Healthy life expectancy (HALE) increased to 63.5 years in 2019, primarily due to declining mortality rather than reduced disability, according to WHO.",
+    "source_url": "https://www.who.int/data/gho/data/themes/mortality-and-global-health-estimates/ghe-life-expectancy-and-healthy-life-expectancy",
+    "category": "public-health",
+    "year": 2019,
+    "difficulty": "hard"
+  },
+  {
+    "question": "What was the life expectancy in Western Africa in 2023 — the lowest of any world region?",
+    "units": "years",
+    "answer": 57.7,
+    "source_text": "Regional life expectancy in 2023 ranged from 57.7 years in Western Africa to 82.7 years in Western Europe, according to UN data.",
+    "source_url": "https://worldpopulationreview.com/country-rankings/life-expectancy-by-country",
+    "category": "public-health",
+    "year": 2023,
+    "difficulty": "hard"
+  },
+  {
+    "question": "What percentage of children who are forcibly displaced make up the total displaced population, even though they are only 29% of the world's population?",
+    "units": "percent",
+    "answer": 40,
+    "source_text": "Children account for 40% of all forcibly displaced people, but make up only 29% of the world's population, according to UNHCR.",
+    "source_url": "https://hias.org/news/unhcr-global-forced-displacement-surges-past-122-million/",
+    "category": "public-health",
+    "year": 2024,
+    "difficulty": "medium"
+  },
+  {
+    "question": "How many newborns died within the first 28 days of life globally in 2023?",
+    "units": "newborns",
+    "answer": 2300000,
+    "source_text": "In 2023, 2.3 million newborns died within the first 28 days of life and 2.5 million children aged 1-59 months also died, according to UNICEF.",
+    "source_url": "https://data.unicef.org/resources/levels-and-trends-in-child-mortality-2024/",
+    "category": "public-health",
+    "year": 2023,
+    "difficulty": "hard"
+  },
+  {
+    "question": "What percentage of under-five deaths in 2023 occurred within the first 28 days of life?",
+    "units": "percent",
+    "answer": 48,
+    "source_text": "Nearly half of all under-five deaths in 2023 occurred within the first 28 days of life, underscoring the heightened vulnerability of newborns, according to UNICEF.",
+    "source_url": "https://data.unicef.org/resources/levels-and-trends-in-child-mortality-2024/",
+    "category": "public-health",
+    "year": 2023,
+    "difficulty": "medium"
+  },
+  {
+    "question": "How many children under 5 died globally in the year 1990?",
+    "units": "children",
+    "answer": 12800000,
+    "source_text": "The total number of under-5 deaths worldwide has declined from 12.8 million in 1990 to 4.8 million in 2023, according to WHO/UNICEF.",
+    "source_url": "https://www.who.int/data/gho/data/themes/topics/topic-details/GHO/child-mortality-and-causes-of-death",
+    "category": "public-health",
+    "year": 1990,
+    "difficulty": "medium"
+  },
+  {
+    "question": "What was the life expectancy in Western Europe in 2023 — the highest of any world region?",
+    "units": "years",
+    "answer": 82.7,
+    "source_text": "Regional life expectancy in 2023 ranged from 57.7 years in Western Africa to 82.7 years in Western Europe, according to UN data.",
+    "source_url": "https://worldpopulationreview.com/country-rankings/life-expectancy-by-country",
+    "category": "public-health",
+    "year": 2023,
+    "difficulty": "easy"
+  },
+  {
+    "question": "How many people were still offline (not using the internet) in 2024?",
+    "units": "people",
+    "answer": 2600000000,
+    "source_text": "About 2.6 billion people, one-third of the global population, are still offline in 2024, according to ITU.",
+    "source_url": "https://www.itu.int/itu-d/reports/statistics/2024/11/10/ff24-internet-use/",
+    "category": "technology",
+    "year": 2024,
+    "difficulty": "medium"
+  },
+  {
+    "question": "What percentage of people in low-income countries used the internet in 2024?",
+    "units": "percent",
+    "answer": 27,
+    "source_text": "In low-income countries, only 27% of the population is online, compared to 91% in Europe in 2024, according to ITU.",
+    "source_url": "https://www.itu.int/itu-d/reports/statistics/2024/11/10/ff24-internet-use/",
+    "category": "technology",
+    "year": 2024,
+    "difficulty": "medium"
+  },
+  {
+    "question": "How many terawatt-hours of electricity are data centers projected to consume globally by 2030?",
+    "units": "TWh",
+    "answer": 945,
+    "source_text": "Global electricity consumption for data centres is projected to double to reach around 945 TWh by 2030, according to the IEA.",
+    "source_url": "https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai",
+    "category": "technology",
+    "year": 2030,
+    "difficulty": "hard"
+  },
+  {
+    "question": "What percentage of the world's population was covered by at least a 5G network in 2024?",
+    "units": "percent",
+    "answer": 51,
+    "source_text": "5G coverage is estimated to reach 51% of the world population in 2024, according to ITU.",
+    "source_url": "https://www.itu.int/en/mediacentre/Pages/PR-2024-11-27-facts-and-figures.aspx",
+    "category": "technology",
+    "year": 2024,
+    "difficulty": "medium"
+  },
+  {
+    "question": "What percentage of internet users globally were urban dwellers in 2024, compared to rural users?",
+    "units": "percent urban",
+    "answer": 83,
+    "source_text": "Globally, an estimated 83% of urban dwellers use the Internet in 2024, compared with less than half of the rural population (48%), according to ITU.",
+    "source_url": "https://www.itu.int/en/mediacentre/Pages/PR-2024-11-27-facts-and-figures.aspx",
+    "category": "technology",
+    "year": 2024,
+    "difficulty": "medium"
+  },
+  {
+    "question": "What percentage of internet penetration did Africa have in 2024?",
+    "units": "percent",
+    "answer": 38,
+    "source_text": "Internet use in Africa was the lowest worldwide at 38% in 2024, compared to 91% in Europe, according to ITU data.",
+    "source_url": "https://www.statista.com/statistics/265149/internet-penetration-rate-by-region/",
+    "category": "technology",
+    "year": 2024,
+    "difficulty": "medium"
+  },
+  {
+    "question": "Approximately how many active satellites were orbiting Earth as of May 2025?",
+    "units": "satellites",
+    "answer": 12149,
+    "source_text": "As of May 2025, approximately 12,149 active satellites are in various Earth orbits, according to NanoAvionics.",
+    "source_url": "https://nanoavionics.com/blog/how-many-satellites-are-in-space/",
+    "category": "technology",
+    "year": 2025,
+    "difficulty": "hard"
+  },
+  {
+    "question": "What percentage of active satellites in orbit does SpaceX's Starlink constellation represent?",
+    "units": "percent",
+    "answer": 60,
+    "source_text": "SpaceX's Starlink constellation makes up more than 60% of the total number of active satellites orbiting Earth.",
+    "source_url": "https://www.livescience.com/space/space-exploration/how-many-satellites-could-fit-in-earth-orbit-and-how-many-do-we-really-need",
+    "category": "technology",
+    "year": 2024,
+    "difficulty": "hard"
+  },
+  {
+    "question": "What percentage of satellite launches in the 2020s were small satellites (under 300 kg)?",
+    "units": "percent",
+    "answer": 94,
+    "source_text": "By the 2020s, small satellites comprised 94% of all satellite launches, up from 34% in the 1990s, according to NanoAvionics.",
+    "source_url": "https://nanoavionics.com/blog/how-many-satellites-are-in-space/",
+    "category": "technology",
+    "year": 2024,
+    "difficulty": "hard"
+  },
+  {
+    "question": "What percentage of global men used the internet in 2024?",
+    "units": "percent",
+    "answer": 70,
+    "source_text": "Globally, 70% of men are using the Internet, compared with 65% of women in 2024, according to ITU.",
+    "source_url": "https://www.itu.int/en/mediacentre/Pages/PR-2024-11-27-facts-and-figures.aspx",
+    "category": "technology",
+    "year": 2024,
+    "difficulty": "easy"
+  },
+  {
+    "question": "How many terawatt-hours did EV battery demand reach globally in 2024?",
+    "units": "TWh",
+    "answer": 1,
+    "source_text": "In 2024, EV battery demand hit the 1 TWh mark, with battery demand for electric trucks growing by 75%, according to the IEA.",
+    "source_url": "https://www.virta.global/global-electric-vehicle-market",
+    "category": "technology",
+    "year": 2024,
+    "difficulty": "hard"
+  },
+  {
+    "question": "What percentage of all battery cells produced globally came from Chinese factories in 2024?",
+    "units": "percent",
+    "answer": 80,
+    "source_text": "In 2024, almost 80% of all battery cells produced came from Chinese factories, with China also leading in cathode and anode materials, according to the IEA.",
+    "source_url": "https://www.virta.global/global-electric-vehicle-market",
+    "category": "technology",
+    "year": 2024,
+    "difficulty": "medium"
+  },
+  {
+    "question": "How many countries and territories operate registered satellites as of 2025?",
+    "units": "countries",
+    "answer": 105,
+    "source_text": "Operating satellites are registered in 105 countries or multinational organizations, according to NanoAvionics.",
+    "source_url": "https://nanoavionics.com/blog/how-many-satellites-are-in-space/",
+    "category": "technology",
+    "year": 2025,
+    "difficulty": "medium"
+  },
+  {
+    "question": "What percentage of rural people in the world used the Internet in 2024?",
+    "units": "percent",
+    "answer": 48,
+    "source_text": "Globally, an estimated 83% of urban dwellers use the Internet in 2024, compared with less than half of the rural population (48%), according to ITU.",
+    "source_url": "https://www.itu.int/en/mediacentre/Pages/PR-2024-11-27-facts-and-figures.aspx",
+    "category": "technology",
+    "year": 2024,
+    "difficulty": "medium"
+  },
+  {
+    "question": "How many electric cars were exported globally in 2024?",
+    "units": "cars",
+    "answer": 3200000,
+    "source_text": "Global electric car exports surged by nearly 20% in 2024, reaching about 3.2 million electric cars, according to the IEA.",
+    "source_url": "https://iea.blob.core.windows.net/assets/7ea38b60-3033-42a6-9589-71134f4229f4/GlobalEVOutlook2025.pdf",
+    "category": "technology",
+    "year": 2024,
+    "difficulty": "hard"
+  },
+  {
+    "question": "What was the global total fertility rate in 2023 (births per woman)?",
+    "units": "births per woman",
+    "answer": 2.3,
+    "source_text": "The total fertility rate of the world dropped to 2.3 children per woman in 2023, according to UN DESA.",
+    "source_url": "https://www.statista.com/statistics/1034075/fertility-rate-world-continents-1950-2020/",
+    "category": "demographics",
+    "year": 2023,
+    "difficulty": "easy"
+  },
+  {
+    "question": "How many people lived in urban areas globally in 2024?",
+    "units": "people",
+    "answer": 4700000000,
+    "source_text": "The global urban population was approximately 4.7 billion in 2024, 57.7% of the total, according to World Bank data.",
+    "source_url": "https://tradingeconomics.com/world/urban-population-wb-data.html",
+    "category": "demographics",
+    "year": 2024,
+    "difficulty": "medium"
+  },
+  {
+    "question": "What was the global life expectancy for males in 2023, in years?",
+    "units": "years",
+    "answer": 70.8,
+    "source_text": "The global life expectancy in 2023 was 70.8 years for males and 76.0 for females, according to UN data.",
+    "source_url": "https://worldpopulationreview.com/country-rankings/life-expectancy-by-country",
+    "category": "demographics",
+    "year": 2023,
+    "difficulty": "easy"
+  },
+  {
+    "question": "In how many countries and territories had the total fertility rate fallen below the replacement level of 2.1 as of 2021?",
+    "units": "countries",
+    "answer": 110,
+    "source_text": "Over half of all countries (110 of 204) had TFR below the replacement level of 2.1 as of 2021, according to IHME via The Lancet.",
+    "source_url": "https://www.healthdata.org/news-events/newsroom/news-releases/lancet-dramatic-declines-global-fertility-rates-set-transform",
+    "category": "demographics",
+    "year": 2021,
+    "difficulty": "medium"
+  },
+  {
+    "question": "What was the total fertility rate in sub-Saharan Africa in 2021 (births per woman)?",
+    "units": "births per woman",
+    "answer": 4.0,
+    "source_text": "The TFR of sub-Saharan Africa is nearly twice the global average, at four children per female in 2021, according to IHME.",
+    "source_url": "https://www.healthdata.org/news-events/newsroom/news-releases/lancet-dramatic-declines-global-fertility-rates-set-transform",
+    "category": "demographics",
+    "year": 2021,
+    "difficulty": "medium"
+  },
+  {
+    "question": "What percentage of the global population is projected to live in urban areas by 2050, according to the UN?",
+    "units": "percent",
+    "answer": 68,
+    "source_text": "Today 55% of the world's population lives in urban areas, a proportion expected to increase to 68% by 2050, according to the UN.",
+    "source_url": "https://www.un.org/development/desa/en/news/population/2018-revision-of-world-urbanization-prospects.html",
+    "category": "demographics",
+    "year": 2050,
+    "difficulty": "easy"
+  },
+  {
+    "question": "How many Sudanese people were displaced at the end of 2024 — the world's largest single-country displacement crisis?",
+    "units": "people",
+    "answer": 14300000,
+    "source_text": "A total of 14.3 million Sudanese people, a third of the nation's population, were displaced at the end of 2024, according to UNHCR.",
+    "source_url": "https://www.unrefugees.org/refugee-facts/statistics/",
+    "category": "demographics",
+    "year": 2024,
+    "difficulty": "hard"
+  },
+  {
+    "question": "How many Venezuelans have been displaced from their country?",
+    "units": "people",
+    "answer": 7600000,
+    "source_text": "A total of 7.6 million Venezuelans have fled the country due to difficult conditions in their homeland, according to NRC using UNHCR data.",
+    "source_url": "https://www.nrc.no/global-figures",
+    "category": "demographics",
+    "year": 2024,
+    "difficulty": "hard"
+  },
+  {
+    "question": "How many Syrian refugees and asylum-seekers were there at the end of 2024?",
+    "units": "people",
+    "answer": 6100000,
+    "source_text": "By the end of 2024, there were 6.1 million Syrian refugees and asylum-seekers, with an additional 7.4 million internally displaced, according to UNHCR.",
+    "source_url": "https://www.unrefugees.org/refugee-facts/statistics/",
+    "category": "demographics",
+    "year": 2024,
+    "difficulty": "hard"
+  },
+  {
+    "question": "What percentage of young people aged 15-24 used the internet globally in 2024?",
+    "units": "percent",
+    "answer": 79,
+    "source_text": "Worldwide, 79% of people aged 15-24 use the Internet, 13 percentage points more than among the rest of the population, according to ITU.",
+    "source_url": "https://www.itu.int/en/mediacentre/Pages/PR-2024-11-27-facts-and-figures.aspx",
+    "category": "demographics",
+    "year": 2024,
+    "difficulty": "easy"
+  },
+  {
+    "question": "How many people were stateless (lacking nationality) at the end of 2024?",
+    "units": "people",
+    "answer": 4400000,
+    "source_text": "At the end of 2024, 4.4 million people remain stateless, lacking nationality and rights, according to UNHCR.",
+    "source_url": "https://hias.org/news/unhcr-global-forced-displacement-surges-past-122-million/",
+    "category": "demographics",
+    "year": 2024,
+    "difficulty": "hard"
+  },
+  {
+    "question": "How many refugees were resettled to third countries in 2024, the highest number in more than 40 years?",
+    "units": "people",
+    "answer": 188800,
+    "source_text": "The past year also saw the highest number of refugees resettled to third countries for more than 40 years (188,800), according to UNHCR.",
+    "source_url": "https://www.unhcr.org/us/global-trends",
+    "category": "demographics",
+    "year": 2024,
+    "difficulty": "hard"
+  },
+  {
+    "question": "What fraction of the Syrian population has been displaced by war?",
+    "units": "fraction (1 in N)",
+    "answer": 4,
+    "source_text": "One quarter of the Syrian population have been displaced by the war. One in six refugees worldwide are Syrian, according to UNHCR.",
+    "source_url": "https://www.unrefugees.org/refugee-facts/statistics/",
+    "category": "demographics",
+    "year": 2024,
+    "difficulty": "medium"
+  },
+  {
+    "question": "How many Ukrainian people were forcibly displaced by the end of 2024?",
+    "units": "people",
+    "answer": 8800000,
+    "source_text": "The war in Ukraine continues to drive displacement, with a total of 8.8 million Ukrainians forcibly displaced by the end of 2024, according to UNHCR.",
+    "source_url": "https://www.unrefugees.org/news/five-takeaways-from-the-2024-unhcr-global-trends-report/",
+    "category": "demographics",
+    "year": 2024,
+    "difficulty": "hard"
+  },
+  {
+    "question": "How many displaced people returned to their homes or countries of origin in 2024?",
+    "units": "people",
+    "answer": 9800000,
+    "source_text": "In 2024, 9.8 million displaced people returned to their homes, including 8.2 million internally displaced people, the second highest total ever, according to UNHCR.",
+    "source_url": "https://hias.org/news/unhcr-global-forced-displacement-surges-past-122-million/",
+    "category": "demographics",
+    "year": 2024,
+    "difficulty": "hard"
+  },
+  {
+    "question": "What percentage of global EV battery cells were produced in China in 2024?",
+    "units": "percent",
+    "answer": 80,
+    "source_text": "In 2024, almost 80% of all EV battery cells produced globally came from Chinese factories, according to the IEA.",
+    "source_url": "https://www.virta.global/global-electric-vehicle-market",
+    "category": "economics",
+    "year": 2024,
+    "difficulty": "medium"
+  },
+  {
+    "question": "What was global health spending as a percentage of GDP in 2021?",
+    "units": "percent",
+    "answer": 10.3,
+    "source_text": "In 2021 global spending on health reached US$ 9.8 trillion or 10.3% of global GDP, according to WHO.",
+    "source_url": "https://www.who.int/news/item/11-12-2023-who-calls-on-governments-for-urgent-action-to-invest-in-universal-health-coverage",
+    "category": "economics",
+    "year": 2021,
+    "difficulty": "medium"
+  },
+  {
+    "question": "What was the total value of global maritime trade in 2023, in tons?",
+    "units": "tons",
+    "answer": 12300000000,
+    "source_text": "In 2023, global maritime trade grew by 2.4% to 12.3 billion tons, according to UNCTAD.",
+    "source_url": "https://unctad.org/publication/review-maritime-transport-2024",
+    "category": "economics",
+    "year": 2023,
+    "difficulty": "hard"
+  },
+  {
+    "question": "What percentage of global container trade was handled by ports in developing economies of Asia in 2023?",
+    "units": "percent",
+    "answer": 61,
+    "source_text": "In 2023, ports in developing economies of Asia handled 61% of world port container traffic, according to UNCTAD.",
+    "source_url": "https://unctadstat.unctad.org/insights/theme/245",
+    "category": "economics",
+    "year": 2023,
+    "difficulty": "medium"
+  },
+  {
+    "question": "How much does food loss and waste cost the global economy each year, in dollars?",
+    "units": "dollars",
+    "answer": 936000000000,
+    "source_text": "The World Economic Forum estimates that food loss and waste costs the global economy $936 billion a year, according to WRAP.",
+    "source_url": "https://www.wrap.ngo/media-centre/press-releases/food-waste-contributes-10-percent-global-emissions",
+    "category": "economics",
+    "year": 2024,
+    "difficulty": "hard"
+  },
+  {
+    "question": "What was the US health spending as a share of GDP in 2023?",
+    "units": "percent",
+    "answer": 16.7,
+    "source_text": "Health spending as a share of GDP in the U.S. was 16.7% in 2023, substantially higher than peer countries, according to OECD data.",
+    "source_url": "https://www.healthsystemtracker.org/chart-collection/health-spending-u-s-compare-countries/",
+    "category": "economics",
+    "year": 2023,
+    "difficulty": "medium"
+  },
+  {
+    "question": "What percentage of the world's population had access to electricity in 2023?",
+    "units": "percent",
+    "answer": 92,
+    "source_text": "In 2023, new connections raised global access to 92%, reducing people without electricity to 666 million, according to the Tracking SDG7 report.",
+    "source_url": "https://www.worldbank.org/en/topic/energy/publication/tracking-sdg-7-the-energy-progress-report-2025",
+    "category": "economics",
+    "year": 2023,
+    "difficulty": "easy"
+  },
+  {
+    "question": "What percentage of the global population without electricity lived in Sub-Saharan Africa in 2023?",
+    "units": "percent",
+    "answer": 85,
+    "source_text": "Sub-Saharan Africa now accounts for 85% of the global population without electricity, up from 50% in 2010, according to Tracking SDG7.",
+    "source_url": "https://www.worldbank.org/en/topic/energy/publication/tracking-sdg-7-the-energy-progress-report-2025",
+    "category": "economics",
+    "year": 2023,
+    "difficulty": "hard"
+  },
+  {
+    "question": "How many people rely on the ocean for their livelihoods?",
+    "units": "people",
+    "answer": 3000000000,
+    "source_text": "More than 3 billion people rely on the ocean for their livelihoods, including food and energy sources, according to environmental research.",
+    "source_url": "https://www.greenmatch.co.uk/ocean-pollution-facts",
+    "category": "economics",
+    "year": 2024,
+    "difficulty": "easy"
+  },
+  {
+    "question": "How many tonnes of plastic pollution are estimated to currently be in the world's oceans?",
+    "units": "tonnes (midpoint estimate)",
+    "answer": 137000000,
+    "source_text": "As of 2025, an estimated 75 to 199 million tonnes of plastic and waste are in our oceans, with a midpoint around 137 million tonnes.",
+    "source_url": "https://www.greenmatch.co.uk/ocean-pollution-facts",
+    "category": "economics",
+    "year": 2025,
+    "difficulty": "hard"
+  },
+  {
+    "question": "How many tonnes of carbon are stored in the world's forests?",
+    "units": "tonnes",
+    "answer": 714000000000,
+    "source_text": "Forest carbon stocks have increased, reaching 714 gigatonnes, according to FAO FRA 2025.",
+    "source_url": "https://www.fao.org/newsroom/detail/global-deforestation-slows--but-forests-remain-under-pressure--fao-report-shows/en",
+    "category": "science",
+    "year": 2025,
+    "difficulty": "hard"
+  },
+  {
+    "question": "How much faster is the current rate of CO2 increase compared to natural increases at the end of the last ice age?",
+    "units": "times faster",
+    "answer": 100,
+    "source_text": "The annual rate of increase in atmospheric CO2 is about 100 times faster than previous natural increases at the end of the last ice age, according to NOAA.",
+    "source_url": "https://www.climate.gov/news-features/understanding-climate/climate-change-atmospheric-carbon-dioxide",
+    "category": "science",
+    "year": 2024,
+    "difficulty": "medium"
+  },
+  {
+    "question": "What was the estimated global forest growing stock in cubic metres?",
+    "units": "cubic metres",
+    "answer": 630000000000,
+    "source_text": "The world's forest growing stock is estimated at 630 billion cubic metres, according to FAO FRA 2025.",
+    "source_url": "https://www.fao.org/newsroom/detail/global-deforestation-slows--but-forests-remain-under-pressure--fao-report-shows/en",
+    "category": "science",
+    "year": 2025,
+    "difficulty": "hard"
+  },
+  {
+    "question": "How many pieces of plastic, weighing approximately 269,000 tons, are estimated to be in the ocean?",
+    "units": "pieces",
+    "answer": 51000000000000,
+    "source_text": "There are approximately 51 trillion microscopic pieces of plastic, weighing 269,000 tons, in the ocean, according to environmental research.",
+    "source_url": "https://www.sas.org.uk/plastic-pollution/plastic-pollution-facts-figures/",
+    "category": "science",
+    "year": 2024,
+    "difficulty": "hard"
+  },
+  {
+    "question": "What percentage of all food produced globally is lost or wasted across the entire supply chain (including both pre- and post-retail)?",
+    "units": "percent",
+    "answer": 30,
+    "source_text": "Around 30% of all food goes to waste each year when combining the 13% lost in the supply chain (FAO) and the 19% wasted at the consumer level (UNEP), according to WRAP.",
+    "source_url": "https://www.wrap.ngo/media-centre/press-releases/food-waste-contributes-10-percent-global-emissions",
+    "category": "science",
+    "year": 2024,
+    "difficulty": "easy"
+  },
+  {
+    "question": "By what percentage did Brazil reduce deforestation in the Legal Amazon in 2023 compared to 2022?",
+    "units": "percent",
+    "answer": 50,
+    "source_text": "Brazil achieved a 50% reduction in deforestation in 2023 in the Legal Amazon compared to 2022, according to FAO data.",
+    "source_url": "https://www.fao.org/3/cd1211en/online/src/html/data-indicate-reduction-deforestation.html",
+    "category": "science",
+    "year": 2023,
+    "difficulty": "medium"
+  },
+  {
+    "question": "How many land animals were slaughtered globally for food in 2023, according to FAO data?",
+    "units": "animals",
+    "answer": 85000000000,
+    "source_text": "In total, the number of land animals slaughtered in 2023 was approximately 85.4 billion, an increase of about 1.79% over 2022, based on FAOSTAT data.",
+    "source_url": "https://faunalytics.org/global-animal-slaughter-statistics-and-charts/",
+    "category": "global-development",
+    "year": 2023,
+    "difficulty": "medium"
+  },
+  {
+    "question": "What was the global average atmospheric CO2 concentration in 2024, measured in parts per million?",
+    "units": "ppm",
+    "answer": 422.8,
+    "source_text": "Based on NOAA's Global Monitoring Lab annual analysis, global average atmospheric carbon dioxide was 422.8 ppm in 2024, a new record high.",
+    "source_url": "https://www.climate.gov/news-features/understanding-climate/climate-change-atmospheric-carbon-dioxide",
+    "category": "energy-environment",
+    "year": 2024,
+    "difficulty": "easy"
+  },
+  {
+    "question": "What was the global maternal mortality ratio in 2023, expressed as deaths per 100,000 live births?",
+    "units": "deaths per 100,000 live births",
+    "answer": 197,
+    "source_text": "The global MMR in 2023 was 197 per 100,000 live births, according to the WHO/UNICEF/UNFPA/World Bank interagency estimates.",
+    "source_url": "https://www.who.int/news-room/fact-sheets/detail/maternal-mortality",
+    "category": "public-health",
+    "year": 2023,
+    "difficulty": "hard"
+  },
+  {
+    "question": "Approximately how many active (currently operational) satellites were orbiting Earth as of February 2024?",
+    "units": "satellites",
+    "answer": 9300,
+    "source_text": "As of February 2024, there were around 9,300 active (currently operational) satellites orbiting Earth, according to NASA's Scientific Visualization Studio using USSPACECOM data.",
+    "source_url": "https://svs.gsfc.nasa.gov/5258/",
+    "category": "science",
+    "year": 2024,
+    "difficulty": "hard"
+  },
+  {
+    "question": "What percentage of the global population used the internet in 2024, according to the ITU?",
+    "units": "percent",
+    "answer": 68,
+    "source_text": "In 2024, 5.5 billion people were online, representing 68 per cent of the world population, up from 65 per cent one year earlier, according to ITU Facts and Figures 2024.",
+    "source_url": "https://www.itu.int/itu-d/reports/statistics/2024/11/10/ff24-internet-use/",
+    "category": "technology",
+    "year": 2024,
+    "difficulty": "medium"
+  },
+  {
+    "question": "What share of global electricity generation came from renewable sources (including hydropower) in 2024?",
+    "units": "percent",
+    "answer": 32,
+    "source_text": "The share of renewables in the global power mix reached 32% in 2024, an increase of nearly 12 percentage points since 2010, driven by surging solar and wind generation.",
+    "source_url": "https://yearbook.enerdata.net/renewables/renewable-in-electricity-production-share.html",
+    "category": "energy-environment",
+    "year": 2024,
+    "difficulty": "medium"
+  },
+  {
+    "question": "What was the global total fertility rate (average births per woman) in 2023, according to UN estimates?",
+    "units": "births per woman",
+    "answer": 2.3,
+    "source_text": "The global average TFR has dropped steadily to 2.3 births per woman in 2023, down from around 5 in the 1960s, according to UN Population Division estimates.",
+    "source_url": "https://www.un.org/development/desa/pd/content/Key-message-card3",
+    "category": "demographics",
+    "year": 2023,
+    "difficulty": "easy"
+  },
+  {
+    "question": "How much did the United States spend on health care per capita in 2023, in current US dollars?",
+    "units": "dollars per person",
+    "answer": 13432,
+    "source_text": "Health expenditures per person in the U.S. were $13,432 in 2023, over $3,700 more than any other high-income nation, according to OECD Health Statistics data.",
+    "source_url": "https://www.healthsystemtracker.org/chart-collection/health-spending-u-s-compare-countries/",
+    "category": "economics",
+    "year": 2023,
+    "difficulty": "hard"
+  },
+  {
+    "question": "How many terawatt-hours (TWh) of electricity did data centers consume globally in 2024?",
+    "units": "TWh",
+    "answer": 415,
+    "source_text": "The IEA reports that data centres consumed around 415 terawatt-hours (TWh) globally in 2024, roughly 1.5% of global electricity consumption.",
+    "source_url": "https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai",
+    "category": "technology",
+    "year": 2024,
+    "difficulty": "hard"
+  },
+  {
+    "question": "What percentage of the world's population lived in urban areas in 2024, according to World Bank data?",
+    "units": "percent",
+    "answer": 57.7,
+    "source_text": "Urban population (% of total population) in the world was reported at 57.7% in 2024, based on World Bank indicators compiled from United Nations Population Division data.",
+    "source_url": "https://tradingeconomics.com/world/urban-population-percent-of-total-wb-data.html",
+    "category": "demographics",
+    "year": 2024,
+    "difficulty": "easy"
   }
 ]
