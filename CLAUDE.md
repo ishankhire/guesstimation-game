@@ -27,7 +27,9 @@ src/
     ├── types.ts          # Shared types: FermiQuestion, GamePhase, FeedbackData
     ├── utils.ts          # shuffleArray, formatExponent, formatAnswer
     ├── parseAnswer.ts    # Parse messy answer strings to numeric values + extract units
-    └── scoring.ts        # calculateScore — confidence multipliers, tightness bonus, miss penalty
+    ├── scoring.ts        # calculateScore — Distance rule + OoM rule (Greenberg 2018)
+    ├── rating.ts         # Elo-style rating system (0–10000, updates per question)
+    └── rating.test.ts    # Vitest tests for rating system
 
 public/
 └── fermidata.json        # 557 Fermi estimation questions (filtered to ~valid numeric answers)
@@ -43,9 +45,11 @@ public/
 
 ## Scoring
 
-- Hit: `BASE_POINTS (100) × confidence_multiplier × tightness_bonus`
-- Miss: negative penalty scaled by confidence (50% = −20, 90% = −100)
-- Tighter intervals score more points when hit
+Per-question scoring uses Greenberg (2018) proper scoring rules: Distance rule for normal-range answers (exponent in [-2, 4]), Order of Magnitude rule for extreme values. Score range: [-57.27, +10] per question.
+
+## Rating
+
+Elo-style rating (0–10000, starts at 1000). Updated after each question: `R_new = clamp(R + K(R) * (n(score) - E(R)), 0, 10000)`. Sigmoid normalization `n()` preserves monotonicity (honesty incentive). Scale: ~1000 beginner, ~2000 average, ~4000 good, ~7000 outstanding, ~10000 theoretical ceiling. Tests: `npx vitest run src/lib/rating.test.ts`.
 
 ## Important
 

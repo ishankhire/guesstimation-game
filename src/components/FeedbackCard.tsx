@@ -3,17 +3,27 @@ import { formatExponent, formatAnswer } from "@/lib/utils";
 
 interface FeedbackCardProps {
   feedbackData: FeedbackData;
-  lowerBound: string;
-  upperBound: string;
+  lowerValue: number | null;
+  upperValue: number | null;
+  useScientific: boolean;
   confidence: number;
   isLastQuestion: boolean;
   onNext: () => void;
 }
 
+function formatBound(val: number | null, useScientific: boolean): string {
+  if (val === null || !isFinite(val)) return "?";
+  if (useScientific) {
+    return val.toExponential(2);
+  }
+  return formatAnswer(val);
+}
+
 export default function FeedbackCard({
   feedbackData,
-  lowerBound,
-  upperBound,
+  lowerValue,
+  upperValue,
+  useScientific,
   confidence,
   isLastQuestion,
   onNext,
@@ -45,7 +55,7 @@ export default function FeedbackCard({
         <div className="p-4 rounded-lg" style={{ background: "var(--surface)" }}>
           <p className="text-xs text-muted mb-1">True Answer</p>
           <p className="font-mono text-lg font-bold">
-            {formatAnswer(feedbackData.rawAnswer)}
+            {formatAnswer(feedbackData.rawAnswer)}{feedbackData.units ? ` ${feedbackData.units}` : ""}
           </p>
           <p className="text-xs text-muted mt-1 font-mono">
             ≈ {formatExponent(feedbackData.trueExponent)}
@@ -60,16 +70,40 @@ export default function FeedbackCard({
             {feedbackData.points > 0 ? "+" : ""}
             {feedbackData.points.toFixed(2)}
           </p>
+          <p
+            className="font-mono text-xs mt-1"
+            style={{ color: feedbackData.ratingDelta >= 0 ? "var(--success)" : "var(--danger)" }}
+          >
+            Rating {feedbackData.ratingDelta >= 0 ? "+" : ""}{feedbackData.ratingDelta.toFixed(1)}
+          </p>
         </div>
       </div>
 
       <div className="p-4 rounded-lg" style={{ background: "var(--surface)" }}>
         <p className="text-xs text-muted mb-1">Your Interval</p>
         <p className="font-mono text-sm">
-          10^{lowerBound || "?"} → 10^{upperBound || "?"}{" "}
+          {formatBound(lowerValue, useScientific)} → {formatBound(upperValue, useScientific)}{" "}
           <span className="text-muted">at {confidence}% confidence</span>
         </p>
       </div>
+
+      {feedbackData.source_text && (
+        <div className="p-4 rounded-lg" style={{ background: "var(--surface)" }}>
+          <p className="text-xs text-muted mb-1">Source</p>
+          <p className="text-sm">{feedbackData.source_text}</p>
+          {feedbackData.source_url && (
+            <a
+              href={feedbackData.source_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs mt-2 inline-block underline"
+              style={{ color: "var(--accent)" }}
+            >
+              {feedbackData.source_url}
+            </a>
+          )}
+        </div>
+      )}
 
       <div>
         <button className="submit-btn" onClick={onNext}>
