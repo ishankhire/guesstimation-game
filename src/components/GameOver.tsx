@@ -22,7 +22,7 @@ export default function GameOver({
   const ratingPct = Math.min(100, Math.round((rating / 10000) * 100));
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center px-6">
+    <div className="flex flex-col items-center justify-center" style={{ minHeight: "60vh" }}>
       <div className="flex flex-col items-center gap-8 text-center max-w-lg">
         <div className="text-5xl mb-2">{rating >= 2000 ? "🏆" : "📊"}</div>
         <h1 className="text-3xl font-bold tracking-tight">Game Over</h1>

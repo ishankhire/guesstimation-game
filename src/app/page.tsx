@@ -11,6 +11,8 @@ import GameHeader from "@/components/GameHeader";
 import QuestionCard from "@/components/QuestionCard";
 import FeedbackCard from "@/components/FeedbackCard";
 import GameOver from "@/components/GameOver";
+import TabHeader from "@/components/TabHeader";
+import Leaderboard from "@/components/Leaderboard";
 
 const TIME_PER_QUESTION = 175;
 const DISTANCE_EXP_MIN = -2;
@@ -58,6 +60,7 @@ export default function Home() {
   const [submittedScientific, setSubmittedScientific] = useState(false);
 
   const [timeRemaining, setTimeRemaining] = useState(TIME_PER_QUESTION);
+  const [activeTab, setActiveTab] = useState<"game" | "leaderboard">("game");
   const [phase, setPhase] = useState<GamePhase>("loading");
   const [feedbackData, setFeedbackData] = useState<FeedbackData | null>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
@@ -262,80 +265,80 @@ export default function Home() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [questionIndex, gameQuestions.length]);
 
-  if (phase === "loading") {
-    return (
-      <div className="flex min-h-screen flex-col items-center justify-center px-6">
-        <div className="text-muted text-lg">Loading questions…</div>
-      </div>
-    );
-  }
-
-  if (phase === "end") {
-    return (
-      <GameOver
-        score={score}
-        rating={rating}
-        totalQuestions={gameQuestions.length}
-        onPlayAgain={() => startGame(allQuestions)}
-        username={session?.user?.username ?? undefined}
-        isAuthenticated={isAuthenticated}
-        onSignIn={() => signIn("google", { callbackUrl: "/" })}
-      />
-    );
-  }
-
   const unit = currentQuestion ? currentQuestion.units : "";
 
   return (
     <div className="min-h-screen px-6 py-6 sm:px-10 sm:py-8">
       <div className="max-w-3xl mx-auto space-y-8">
-        <GameHeader
-          score={score}
-          rating={rating}
-          questionIndex={questionIndex}
-          totalQuestions={gameQuestions.length}
-          confidence={confidence}
-          onConfidenceChange={setConfidence}
-          timeRemaining={timeRemaining}
-          username={session?.user?.username ?? undefined}
-          isAuthenticated={isAuthenticated}
-        />
+        <TabHeader activeTab={activeTab} onTabChange={setActiveTab} />
 
-        {phase === "playing" && currentQuestion && (
-          <QuestionCard
-            question={currentQuestion.question}
-            unit={unit}
-            confidence={confidence}
-            useScientific={useScientific}
-            lowerPlain={lowerPlain}
-            upperPlain={upperPlain}
-            onLowerPlainChange={setLowerPlain}
-            onUpperPlainChange={setUpperPlain}
-            lowerCoeff={lowerCoeff}
-            lowerExp={lowerExp}
-            lowerExpError={lowerExpError}
-            upperCoeff={upperCoeff}
-            upperExp={upperExp}
-            upperExpError={upperExpError}
-            onLowerCoeffChange={setLowerCoeff}
-            onLowerExpChange={handleLowerExpChange}
-            onUpperCoeffChange={setUpperCoeff}
-            onUpperExpChange={handleUpperExpChange}
-            onSubmit={handleSubmit}
-            canSubmit={canSubmit}
+        {activeTab === "leaderboard" ? (
+          <Leaderboard currentUsername={session?.user?.username ?? undefined} />
+        ) : phase === "loading" ? (
+          <div className="flex flex-col items-center justify-center" style={{ minHeight: "60vh" }}>
+            <div className="text-muted text-lg">Loading questions…</div>
+          </div>
+        ) : phase === "end" ? (
+          <GameOver
+            score={score}
+            rating={rating}
+            totalQuestions={gameQuestions.length}
+            onPlayAgain={() => startGame(allQuestions)}
+            username={session?.user?.username ?? undefined}
+            isAuthenticated={isAuthenticated}
+            onSignIn={() => signIn("google", { callbackUrl: "/" })}
           />
-        )}
+        ) : (
+          <>
+            <GameHeader
+              score={score}
+              rating={rating}
+              questionIndex={questionIndex}
+              totalQuestions={gameQuestions.length}
+              confidence={confidence}
+              onConfidenceChange={setConfidence}
+              timeRemaining={timeRemaining}
+              username={session?.user?.username ?? undefined}
+              isAuthenticated={isAuthenticated}
+            />
 
-        {phase === "feedback" && feedbackData && (
-          <FeedbackCard
-            feedbackData={feedbackData}
-            lowerValue={submittedLower}
-            upperValue={submittedUpper}
-            useScientific={submittedScientific}
-            confidence={confidence}
-            isLastQuestion={questionIndex + 1 >= gameQuestions.length}
-            onNext={nextQuestion}
-          />
+            {phase === "playing" && currentQuestion && (
+              <QuestionCard
+                question={currentQuestion.question}
+                unit={unit}
+                confidence={confidence}
+                useScientific={useScientific}
+                lowerPlain={lowerPlain}
+                upperPlain={upperPlain}
+                onLowerPlainChange={setLowerPlain}
+                onUpperPlainChange={setUpperPlain}
+                lowerCoeff={lowerCoeff}
+                lowerExp={lowerExp}
+                lowerExpError={lowerExpError}
+                upperCoeff={upperCoeff}
+                upperExp={upperExp}
+                upperExpError={upperExpError}
+                onLowerCoeffChange={setLowerCoeff}
+                onLowerExpChange={handleLowerExpChange}
+                onUpperCoeffChange={setUpperCoeff}
+                onUpperExpChange={handleUpperExpChange}
+                onSubmit={handleSubmit}
+                canSubmit={canSubmit}
+              />
+            )}
+
+            {phase === "feedback" && feedbackData && (
+              <FeedbackCard
+                feedbackData={feedbackData}
+                lowerValue={submittedLower}
+                upperValue={submittedUpper}
+                useScientific={submittedScientific}
+                confidence={confidence}
+                isLastQuestion={questionIndex + 1 >= gameQuestions.length}
+                onNext={nextQuestion}
+              />
+            )}
+          </>
         )}
       </div>
     </div>

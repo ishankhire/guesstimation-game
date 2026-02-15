@@ -67,6 +67,39 @@ body {
   color: #fff;
 }
 
+/* Tab bar — Game / Leaderboard navigation */
+.tab-bar {
+  display: inline-flex;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.tab-bar button {
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-right: 1px solid var(--border);
+  background: var(--background);
+  color: var(--foreground);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.tab-bar button:last-child {
+  border-right: none;
+}
+
+.tab-bar button:hover {
+  background: var(--surface);
+}
+
+.tab-bar button.active {
+  background: var(--accent);
+  color: #fff;
+}
+
 /* Bound input group — 10^ [input] unit */
 .bound-group {
   display: flex;
