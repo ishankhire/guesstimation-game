@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
+import { useSession, signIn } from "next-auth/react";
 import { answerToExponent } from "@/lib/parseAnswer";
 import { calculateScore, type ConfidenceLevel } from "@/lib/scoring";
 import { updateRating, INITIAL_RATING } from "@/lib/rating";
@@ -28,11 +29,15 @@ function parseIntStrict(s: string): number {
 }
 
 export default function Home() {
+  const { data: session, status: sessionStatus } = useSession();
+  const isAuthenticated = sessionStatus === "authenticated";
+
   const [allQuestions, setAllQuestions] = useState<FermiQuestion[]>([]);
   const [gameQuestions, setGameQuestions] = useState<FermiQuestion[]>([]);
   const [questionIndex, setQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [rating, setRating] = useState(INITIAL_RATING);
+  const [questionsPlayed, setQuestionsPlayed] = useState(0);
   const [confidence, setConfidence] = useState<ConfidenceLevel>(80);
 
   // Plain mode bounds
@@ -92,12 +97,12 @@ export default function Home() {
   };
 
   const startGame = useCallback(
-    (questions: FermiQuestion[]) => {
+    (questions: FermiQuestion[], resetRating = false) => {
       const shuffled = shuffleArray(questions);
       setGameQuestions(shuffled);
       setQuestionIndex(0);
       setScore(0);
-      setRating(INITIAL_RATING);
+      if (resetRating) setRating(INITIAL_RATING);
       setConfidence(80);
       resetBounds();
       setTimeRemaining(TIME_PER_QUESTION);
@@ -107,6 +112,22 @@ export default function Home() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
+
+  // Load user data from DB for authenticated users
+  useEffect(() => {
+    if (sessionStatus === "loading") return;
+    if (!isAuthenticated) return;
+
+    fetch("/api/user/me")
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (data) {
+          setRating(data.rating ?? INITIAL_RATING);
+          setQuestionsPlayed(data.questionsPlayed ?? 0);
+        }
+      })
+      .catch(() => {});
+  }, [isAuthenticated, sessionStatus]);
 
   // Load questions and start game immediately
   useEffect(() => {
@@ -201,6 +222,17 @@ export default function Home() {
     const ratingDelta = Math.round((newRating - rating) * 100) / 100;
     setRating(newRating);
 
+    // Persist rating for authenticated users (fire-and-forget)
+    if (isAuthenticated) {
+      const newQuestionsPlayed = questionsPlayed + 1;
+      setQuestionsPlayed(newQuestionsPlayed);
+      fetch("/api/user/rating", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ rating: newRating, questionsPlayed: newQuestionsPlayed }),
+      }).catch(() => {});
+    }
+
     setFeedbackData({
       points: result.points,
       hit: result.hit,
@@ -214,7 +246,7 @@ export default function Home() {
     setPhase("feedback");
 
     if (timerRef.current) clearInterval(timerRef.current);
-  }, [phase, gameQuestions, questionIndex, lowerCoeff, upperCoeff, lowerExp, upperExp, lowerPlain, upperPlain, confidence, rating]);
+  }, [phase, gameQuestions, questionIndex, lowerCoeff, upperCoeff, lowerExp, upperExp, lowerPlain, upperPlain, confidence, rating, isAuthenticated, questionsPlayed]);
 
   const nextQuestion = useCallback(() => {
     if (questionIndex + 1 >= gameQuestions.length) {
@@ -245,6 +277,9 @@ export default function Home() {
         rating={rating}
         totalQuestions={gameQuestions.length}
         onPlayAgain={() => startGame(allQuestions)}
+        username={session?.user?.username ?? undefined}
+        isAuthenticated={isAuthenticated}
+        onSignIn={() => signIn("google", { callbackUrl: "/" })}
       />
     );
   }
@@ -262,6 +297,8 @@ export default function Home() {
           confidence={confidence}
           onConfidenceChange={setConfidence}
           timeRemaining={timeRemaining}
+          username={session?.user?.username ?? undefined}
+          isAuthenticated={isAuthenticated}
         />
 
         {phase === "playing" && currentQuestion && (

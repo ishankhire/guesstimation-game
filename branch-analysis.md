@@ -177,3 +177,53 @@ Scratchpad for tracking changes made to the codebase. Update this file after eve
 - `package.json` — Added `vitest` dev dependency.
 
 **Files unchanged:** `scoring.ts`, `parseAnswer.ts`, `utils.ts`, `QuestionCard.tsx`, `globals.css`, `layout.tsx`
+
+---
+
+### Add Google sign-in, username system, and persistent rating
+
+**Motivation:** Rating was in-memory only — lost on page refresh. Added Google OAuth for user accounts, a username selection flow (4–17 chars, alphanumeric + underscores), and database-backed rating persistence. Anonymous play remains supported (no sign-in required).
+
+**Tech stack additions:** NextAuth.js v5 (Auth.js) for Google OAuth, Prisma v5 ORM with `@auth/prisma-adapter`, Supabase (hosted PostgreSQL).
+
+**Database schema:** `User` model with NextAuth fields plus custom `username` (String?, unique), `rating` (Float, default 1000), `questionsPlayed` (Int, default 0). Plus standard NextAuth `Account`, `Session`, `VerificationToken` models.
+
+**Changes:**
+
+- `prisma/schema.prisma` — New. Database schema with User (including username, rating, questionsPlayed), Account, Session, VerificationToken models.
+
+- `src/lib/db.ts` — New. Prisma client singleton (avoids multiple instances in dev).
+
+- `src/lib/auth.ts` — New. NextAuth v5 config with Google provider, PrismaAdapter, session callback that enriches session with `username` and `rating`. Type augmentation for `Session`.
+
+- `src/app/api/auth/[...nextauth]/route.ts` — New. NextAuth catch-all route handler.
+
+- `src/app/api/user/username/route.ts` — New. POST endpoint: validates username (4–17 chars, `/^[a-zA-Z0-9_]+$/`), checks uniqueness, saves to DB.
+
+- `src/app/api/user/rating/route.ts` — New. POST endpoint: accepts `{ rating, questionsPlayed }`, validates, updates DB.
+
+- `src/app/api/user/me/route.ts` — New. GET endpoint: returns `{ username, rating, questionsPlayed }` for authenticated user.
+
+- `src/app/auth/signin/page.tsx` — New. Sign-in page with Google button and "Play without signing in" link.
+
+- `src/app/username/page.tsx` — New. Username selection form with real-time validation, shown after first Google sign-in.
+
+- `src/components/SessionProvider.tsx` — New. Client wrapper for NextAuth's SessionProvider.
+
+- `src/middleware.ts` — New. Route protection: redirects authenticated users without username to `/username`. Allows anonymous users through.
+
+- `.env.local` — New (gitignored). Template for DATABASE_URL, NEXTAUTH_SECRET, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET.
+
+- `src/app/layout.tsx` — Wrapped children with `<SessionProvider>`.
+
+- `src/app/page.tsx` — Added `useSession` hook, loads persisted rating from `/api/user/me` on mount for authenticated users, saves rating to DB (fire-and-forget) after each question submission. "Play Again" no longer resets rating. Passes `username` and `isAuthenticated` to GameHeader and GameOver.
+
+- `src/components/GameHeader.tsx` — Added `username` and `isAuthenticated` props. Displays username above rating, sign-out button for authenticated users.
+
+- `src/components/GameOver.tsx` — Added `username`, `isAuthenticated`, `onSignIn` props. Shows username, "Sign in to save your progress" for anonymous users, sign-out for authenticated.
+
+- `src/lib/types.ts` — Added `UserData` interface.
+
+- `package.json` — Added `next-auth@beta`, `@auth/prisma-adapter`, `@prisma/client`, `prisma` (dev).
+
+**Files unchanged:** `scoring.ts`, `rating.ts`, `rating.test.ts`, `parseAnswer.ts`, `utils.ts`, `QuestionCard.tsx`, `FeedbackCard.tsx`, `globals.css`

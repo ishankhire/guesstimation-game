@@ -1,3 +1,4 @@
+import { signOut } from "next-auth/react";
 import { type ConfidenceLevel } from "@/lib/scoring";
 
 const CONFIDENCE_LEVELS: ConfidenceLevel[] = [50, 60, 70, 80, 90];
@@ -10,6 +11,8 @@ interface GameHeaderProps {
   confidence: ConfidenceLevel;
   onConfidenceChange: (level: ConfidenceLevel) => void;
   timeRemaining: number;
+  username?: string;
+  isAuthenticated?: boolean;
 }
 
 export default function GameHeader({
@@ -20,11 +23,16 @@ export default function GameHeader({
   confidence,
   onConfidenceChange,
   timeRemaining,
+  username,
+  isAuthenticated,
 }: GameHeaderProps) {
   return (
     <div className="flex items-start justify-between gap-4 flex-wrap">
       {/* Score + Rating */}
       <div>
+        {username && (
+          <div className="text-xs font-medium text-muted mb-1">{username}</div>
+        )}
         <div className="text-sm font-semibold" style={{ color: "var(--accent)" }}>
           Rating:
         </div>
@@ -34,6 +42,14 @@ export default function GameHeader({
         <div className="text-xs text-muted mt-1">
           Score: {score.toFixed(2)}
         </div>
+        {isAuthenticated && (
+          <button
+            onClick={() => signOut({ callbackUrl: "/" })}
+            className="text-xs text-muted hover:underline mt-1"
+          >
+            Sign out
+          </button>
+        )}
       </div>
 
       {/* Progress + Confidence */}

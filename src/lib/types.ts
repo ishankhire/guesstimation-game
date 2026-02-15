@@ -11,6 +11,12 @@ export interface FermiQuestion {
 
 export type GamePhase = "loading" | "playing" | "feedback" | "end";
 
+export interface UserData {
+  username: string;
+  rating: number;
+  questionsPlayed: number;
+}
+
 export interface FeedbackData {
   points: number;
   hit: boolean;
