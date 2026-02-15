@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { answerToExponent } from "@/lib/parseAnswer";
 import { calculateScore, type ConfidenceLevel } from "@/lib/scoring";
+import { updateRating, INITIAL_RATING } from "@/lib/rating";
 import { type FermiQuestion, type GamePhase, type FeedbackData } from "@/lib/types";
 import { shuffleArray } from "@/lib/utils";
 import GameHeader from "@/components/GameHeader";
@@ -31,6 +32,7 @@ export default function Home() {
   const [gameQuestions, setGameQuestions] = useState<FermiQuestion[]>([]);
   const [questionIndex, setQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
+  const [rating, setRating] = useState(INITIAL_RATING);
   const [confidence, setConfidence] = useState<ConfidenceLevel>(80);
 
   // Plain mode bounds
@@ -95,6 +97,7 @@ export default function Home() {
       setGameQuestions(shuffled);
       setQuestionIndex(0);
       setScore(0);
+      setRating(INITIAL_RATING);
       setConfidence(80);
       resetBounds();
       setTimeRemaining(TIME_PER_QUESTION);
@@ -193,6 +196,11 @@ export default function Home() {
     setSubmittedUpper(upperVal);
     setSubmittedScientific(sci);
     setScore((prev) => prev + result.points);
+
+    const newRating = updateRating(rating, result.points);
+    const ratingDelta = Math.round((newRating - rating) * 100) / 100;
+    setRating(newRating);
+
     setFeedbackData({
       points: result.points,
       hit: result.hit,
@@ -201,11 +209,12 @@ export default function Home() {
       units: currentQ.units,
       source_text: currentQ.source_text,
       source_url: currentQ.source_url,
+      ratingDelta,
     });
     setPhase("feedback");
 
     if (timerRef.current) clearInterval(timerRef.current);
-  }, [phase, gameQuestions, questionIndex, lowerCoeff, upperCoeff, lowerExp, upperExp, lowerPlain, upperPlain, confidence]);
+  }, [phase, gameQuestions, questionIndex, lowerCoeff, upperCoeff, lowerExp, upperExp, lowerPlain, upperPlain, confidence, rating]);
 
   const nextQuestion = useCallback(() => {
     if (questionIndex + 1 >= gameQuestions.length) {
@@ -233,6 +242,7 @@ export default function Home() {
     return (
       <GameOver
         score={score}
+        rating={rating}
         totalQuestions={gameQuestions.length}
         onPlayAgain={() => startGame(allQuestions)}
       />
@@ -246,6 +256,7 @@ export default function Home() {
       <div className="max-w-3xl mx-auto space-y-8">
         <GameHeader
           score={score}
+          rating={rating}
           questionIndex={questionIndex}
           totalQuestions={gameQuestions.length}
           confidence={confidence}

@@ -19,4 +19,5 @@ export interface FeedbackData {
   units: string;
   source_text: string;
   source_url: string;
+  ratingDelta: number;
 }

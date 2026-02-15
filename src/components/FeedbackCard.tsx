@@ -70,6 +70,12 @@ export default function FeedbackCard({
             {feedbackData.points > 0 ? "+" : ""}
             {feedbackData.points.toFixed(2)}
           </p>
+          <p
+            className="font-mono text-xs mt-1"
+            style={{ color: feedbackData.ratingDelta >= 0 ? "var(--success)" : "var(--danger)" }}
+          >
+            Rating {feedbackData.ratingDelta >= 0 ? "+" : ""}{feedbackData.ratingDelta.toFixed(1)}
+          </p>
         </div>
       </div>
 

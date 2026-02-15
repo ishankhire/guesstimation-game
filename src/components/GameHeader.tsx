@@ -4,6 +4,7 @@ const CONFIDENCE_LEVELS: ConfidenceLevel[] = [50, 60, 70, 80, 90];
 
 interface GameHeaderProps {
   score: number;
+  rating: number;
   questionIndex: number;
   totalQuestions: number;
   confidence: ConfidenceLevel;
@@ -13,6 +14,7 @@ interface GameHeaderProps {
 
 export default function GameHeader({
   score,
+  rating,
   questionIndex,
   totalQuestions,
   confidence,
@@ -21,13 +23,16 @@ export default function GameHeader({
 }: GameHeaderProps) {
   return (
     <div className="flex items-start justify-between gap-4 flex-wrap">
-      {/* Score */}
+      {/* Score + Rating */}
       <div>
         <div className="text-sm font-semibold" style={{ color: "var(--accent)" }}>
-          Score:
+          Rating:
         </div>
         <div className="text-2xl font-bold">
-          {score.toFixed(2)} <span className="text-base font-normal text-muted">points</span>
+          {Math.round(rating)}
+        </div>
+        <div className="text-xs text-muted mt-1">
+          Score: {score.toFixed(2)}
         </div>
       </div>
 

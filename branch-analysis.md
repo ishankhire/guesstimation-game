@@ -144,3 +144,36 @@ Scratchpad for tracking changes made to the codebase. Update this file after eve
 - `src/lib/scoring.ts` — Added `scoreDistance()` function (linear r/s/t, c=100, additive expansion). Split `C` constant into `C_DISTANCE=100` and `C_OOM=ln(100)`. Added `DISTANCE_EXP_MIN=-2` and `DISTANCE_EXP_MAX=4` threshold constants. `calculateScore()` now checks `trueExp` against threshold to select rule.
 
 **Files unchanged:** All other files — `calculateScore` API signature unchanged
+
+---
+
+### Add Elo-style rating system
+
+**Motivation:** Raw cumulative score is hard to interpret across sessions. Added a rating system (0–10000, starting at 1000) that updates after each question, giving players a persistent skill indicator. The update is monotonically increasing in score, preserving the honesty incentive from the proper scoring rules.
+
+**Formula:** `R_new = clamp(R + K(R) * (n(score) - E(R)), 0, 10000)` where:
+- `n(score) = 1 / (1 + exp(-score/4))` — sigmoid normalization of raw score to (0,1)
+- `E(R) = R / (R + 1000)` — expected normalized score at current rating
+- `K(R) = 100 / (1 + R/5000)` — gain factor, larger at low ratings for fast convergence
+
+**Rating scale:** ~1000 = beginner (break even), ~2000 = average, ~4000 = good, ~7000 = outstanding, ~10000 = theoretical ceiling.
+
+**Changes:**
+
+- `src/lib/rating.ts` — New. Exports `normalizeScore`, `expectedScore`, `gainFactor`, `updateRating`, `INITIAL_RATING`.
+
+- `src/lib/rating.test.ts` — New. 27 vitest tests covering component functions, monotonicity (honesty incentive), clamping, convergence, and equilibrium points.
+
+- `src/lib/types.ts` — Added `ratingDelta: number` to `FeedbackData`.
+
+- `src/app/page.tsx` — Added `rating` state (initialized to `INITIAL_RATING`). `handleSubmit` calls `updateRating` and passes `ratingDelta` into `FeedbackData`. Reset on play-again. Passes `rating` to `GameHeader` and `GameOver`.
+
+- `src/components/GameHeader.tsx` — Rating displayed prominently (large text), cumulative score shown smaller below. Added `rating` prop.
+
+- `src/components/FeedbackCard.tsx` — Shows rating delta below points (e.g. "Rating +27.3" or "Rating -14.1").
+
+- `src/components/GameOver.tsx` — Final screen shows rating (with progress bar out of 10000) instead of raw score. Added `rating` prop.
+
+- `package.json` — Added `vitest` dev dependency.
+
+**Files unchanged:** `scoring.ts`, `parseAnswer.ts`, `utils.ts`, `QuestionCard.tsx`, `globals.css`, `layout.tsx`
