@@ -227,3 +227,31 @@ Scratchpad for tracking changes made to the codebase. Update this file after eve
 - `package.json` — Added `next-auth@beta`, `@auth/prisma-adapter`, `@prisma/client`, `prisma` (dev).
 
 **Files unchanged:** `scoring.ts`, `rating.ts`, `rating.test.ts`, `parseAnswer.ts`, `utils.ts`, `QuestionCard.tsx`, `FeedbackCard.tsx`, `globals.css`
+
+---
+
+### UI redesign: dark theme, new fonts, rearranged layout, confidence level change
+
+**Motivation:** Visual refresh to give the game a more distinct, modern look. Moved away from the clinical white/indigo design to a dark, warm aesthetic.
+
+**Design changes:**
+- **Fonts:** Inter → Space Grotesk (display), JetBrains Mono → IBM Plex Mono (data/numbers)
+- **Color scheme:** White background → dark charcoal (#0f1117), indigo accent → warm amber/gold (#e5a83b), matching dark surfaces and borders throughout
+- **Layout:** GameHeader restructured from 3-column spread to compact 2-row bar (Rating/Question/Timer on row 1, Confidence/Score/Auth on row 2)
+- **Components:** Pill-shaped buttons and tabs (border-radius: 999px), rounded card corners (12px), colored left-border on feedback cards (green/red), focus-within highlight on inputs, uppercase tracking-wider labels
+- **Confidence levels:** Changed from 5 options [50, 60, 70, 80, 90] to 3 options [60, 75, 90]
+
+**Changes:**
+
+- `src/app/layout.tsx` — Swapped Inter/JetBrains_Mono imports to Space_Grotesk/IBM_Plex_Mono
+- `src/app/globals.css` — Complete rewrite of CSS variables (dark palette) and all component classes (pill shapes, dark surfaces, focus states)
+- `src/lib/scoring.ts` — ConfidenceLevel type changed from `50 | 60 | 70 | 80 | 90` to `60 | 75 | 90`
+- `src/app/page.tsx` — Default confidence changed from 80 to 75
+- `src/components/GameHeader.tsx` — Rearranged to 2-row layout, confidence levels reduced to [60, 75, 90], compact auth UI
+- `src/components/QuestionCard.tsx` — Larger question text (3xl/4xl), uppercase labels, accent-colored heading
+- `src/components/FeedbackCard.tsx` — Colored left border instead of circle icon, uppercase section labels, surface-light backgrounds
+- `src/components/GameOver.tsx` — Larger rating display (6xl), thicker progress bar, transition-colors on links
+- `src/components/Leaderboard.tsx` — Uppercase headers, amber accent on rating column, updated highlight color
+- `src/components/TabHeader.tsx` — No structural change (pill styling handled by globals.css)
+
+**Files unchanged:** `scoring.ts` (only type change), `rating.ts`, `rating.test.ts`, `parseAnswer.ts`, `utils.ts`, `types.ts`, all API routes, `middleware.ts`, `SessionProvider.tsx`

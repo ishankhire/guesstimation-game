@@ -30,13 +30,13 @@ export default function GameOver({
           <p className="text-muted text-sm">{username}</p>
         )}
         <div className="card w-full space-y-4 text-center">
-          <div className="text-5xl font-bold font-mono" style={{ color: "var(--accent)" }}>
+          <div className="text-6xl font-bold font-mono" style={{ color: "var(--accent)" }}>
             {Math.round(rating)}
           </div>
-          <p className="text-muted text-sm">rating</p>
-          <div className="w-full bg-[var(--surface)] rounded-full h-2 mt-4">
+          <p className="text-muted text-sm uppercase tracking-wider">rating</p>
+          <div className="w-full rounded-full h-3 mt-4" style={{ background: "var(--surface-light)" }}>
             <div
-              className="h-2 rounded-full transition-all"
+              className="h-3 rounded-full transition-all"
               style={{ width: `${ratingPct}%`, background: "var(--accent)" }}
             />
           </div>
@@ -50,7 +50,7 @@ export default function GameOver({
         {!isAuthenticated && onSignIn && (
           <button
             onClick={onSignIn}
-            className="text-sm text-muted hover:underline"
+            className="text-sm text-muted hover:text-foreground transition-colors"
           >
             Sign in to save your progress
           </button>
@@ -58,7 +58,7 @@ export default function GameOver({
         {isAuthenticated && (
           <button
             onClick={() => signOut({ callbackUrl: "/" })}
-            className="text-sm text-muted hover:underline"
+            className="text-sm text-muted hover:text-foreground transition-colors"
           >
             Sign out
           </button>

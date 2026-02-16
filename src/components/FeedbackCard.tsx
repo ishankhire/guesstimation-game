@@ -28,32 +28,27 @@ export default function FeedbackCard({
   isLastQuestion,
   onNext,
 }: FeedbackCardProps) {
+  const borderColor = feedbackData.hit ? "var(--success)" : "var(--danger)";
+
   return (
-    <div className="feedback-card card space-y-5">
+    <div
+      className="feedback-card card space-y-5"
+      style={{ borderLeft: `4px solid ${borderColor}` }}
+    >
       <div className="flex items-center gap-3">
-        <div
-          className="w-9 h-9 rounded-full flex items-center justify-center text-lg font-bold text-white"
-          style={{
-            background: feedbackData.hit ? "var(--success)" : "var(--danger)",
-          }}
-        >
-          {feedbackData.hit ? "✓" : "✗"}
-        </div>
-        <div>
-          <h3 className="font-bold text-lg">
-            {feedbackData.hit ? "Hit!" : "Miss!"}
-          </h3>
-          <p className="text-sm text-muted">
-            {feedbackData.hit
-              ? "The true answer falls within your interval"
-              : "The true answer is outside your interval"}
-          </p>
-        </div>
+        <h3 className="text-xl font-bold" style={{ color: borderColor }}>
+          {feedbackData.hit ? "Hit!" : "Miss!"}
+        </h3>
+        <p className="text-sm text-muted">
+          {feedbackData.hit
+            ? "The true answer falls within your interval"
+            : "The true answer is outside your interval"}
+        </p>
       </div>
 
       <div className="grid grid-cols-2 gap-4">
-        <div className="p-4 rounded-lg" style={{ background: "var(--surface)" }}>
-          <p className="text-xs text-muted mb-1">True Answer</p>
+        <div className="p-4 rounded-lg" style={{ background: "var(--surface-light)" }}>
+          <p className="text-xs text-muted mb-1 uppercase tracking-wider">True Answer</p>
           <p className="font-mono text-lg font-bold">
             {formatAnswer(feedbackData.rawAnswer)}{feedbackData.units ? ` ${feedbackData.units}` : ""}
           </p>
@@ -61,8 +56,8 @@ export default function FeedbackCard({
             ≈ {formatExponent(feedbackData.trueExponent)}
           </p>
         </div>
-        <div className="p-4 rounded-lg" style={{ background: "var(--surface)" }}>
-          <p className="text-xs text-muted mb-1">Points</p>
+        <div className="p-4 rounded-lg" style={{ background: "var(--surface-light)" }}>
+          <p className="text-xs text-muted mb-1 uppercase tracking-wider">Points</p>
           <p
             className="font-mono text-lg font-bold"
             style={{ color: feedbackData.points >= 0 ? "var(--success)" : "var(--danger)" }}
@@ -79,8 +74,8 @@ export default function FeedbackCard({
         </div>
       </div>
 
-      <div className="p-4 rounded-lg" style={{ background: "var(--surface)" }}>
-        <p className="text-xs text-muted mb-1">Your Interval</p>
+      <div className="p-4 rounded-lg" style={{ background: "var(--surface-light)" }}>
+        <p className="text-xs text-muted mb-1 uppercase tracking-wider">Your Interval</p>
         <p className="font-mono text-sm">
           {formatBound(lowerValue, useScientific)} → {formatBound(upperValue, useScientific)}{" "}
           <span className="text-muted">at {confidence}% confidence</span>
@@ -88,8 +83,8 @@ export default function FeedbackCard({
       </div>
 
       {feedbackData.source_text && (
-        <div className="p-4 rounded-lg" style={{ background: "var(--surface)" }}>
-          <p className="text-xs text-muted mb-1">Source</p>
+        <div className="p-4 rounded-lg" style={{ background: "var(--surface-light)" }}>
+          <p className="text-xs text-muted mb-1 uppercase tracking-wider">Source</p>
           <p className="text-sm">{feedbackData.source_text}</p>
           {feedbackData.source_url && (
             <a

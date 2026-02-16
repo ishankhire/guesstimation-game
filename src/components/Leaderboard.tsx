@@ -41,7 +41,7 @@ export default function Leaderboard({ currentUsername }: LeaderboardProps) {
   if (error) {
     return (
       <div className="flex items-center justify-center" style={{ minHeight: "40vh" }}>
-        <div className="text-danger text-lg">Failed to load leaderboard.</div>
+        <div className="text-lg" style={{ color: "var(--danger)" }}>Failed to load leaderboard.</div>
       </div>
     );
   }
@@ -59,11 +59,11 @@ export default function Leaderboard({ currentUsername }: LeaderboardProps) {
       <h2 className="text-xl font-bold mb-4">Top Players</h2>
       <table className="w-full text-left">
         <thead>
-          <tr className="text-sm font-semibold" style={{ color: "var(--muted)" }}>
-            <th className="pb-2 pr-4 w-12">#</th>
-            <th className="pb-2 pr-4">Username</th>
-            <th className="pb-2 pr-4 text-right">Rating</th>
-            <th className="pb-2 text-right">Games</th>
+          <tr className="text-xs font-semibold uppercase tracking-wider" style={{ color: "var(--muted)" }}>
+            <th className="pb-3 pr-4 w-12">#</th>
+            <th className="pb-3 pr-4">Username</th>
+            <th className="pb-3 pr-4 text-right">Rating</th>
+            <th className="pb-3 text-right">Games</th>
           </tr>
         </thead>
         <tbody>
@@ -75,13 +75,13 @@ export default function Leaderboard({ currentUsername }: LeaderboardProps) {
                 className="border-t"
                 style={{
                   borderColor: "var(--border)",
-                  background: isCurrentUser ? "rgba(91, 95, 239, 0.08)" : undefined,
+                  background: isCurrentUser ? "rgba(229, 168, 59, 0.08)" : undefined,
                 }}
               >
-                <td className="py-2 pr-4 font-mono text-sm" style={{ color: "var(--muted)" }}>
+                <td className="py-3 pr-4 font-mono text-sm" style={{ color: "var(--muted)" }}>
                   {i + 1}
                 </td>
-                <td className="py-2 pr-4 font-semibold">
+                <td className="py-3 pr-4 font-semibold">
                   {entry.username}
                   {isCurrentUser && (
                     <span className="text-xs ml-2" style={{ color: "var(--accent)" }}>
@@ -89,10 +89,10 @@ export default function Leaderboard({ currentUsername }: LeaderboardProps) {
                     </span>
                   )}
                 </td>
-                <td className="py-2 pr-4 text-right font-mono font-bold">
+                <td className="py-3 pr-4 text-right font-mono font-bold" style={{ color: "var(--accent)" }}>
                   {Math.round(entry.rating)}
                 </td>
-                <td className="py-2 text-right text-sm" style={{ color: "var(--muted)" }}>
+                <td className="py-3 text-right text-sm" style={{ color: "var(--muted)" }}>
                   {entry.questionsPlayed}
                 </td>
               </tr>

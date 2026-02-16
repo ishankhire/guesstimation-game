@@ -1,4 +1,4 @@
-export type ConfidenceLevel = 50 | 60 | 70 | 80 | 90;
+export type ConfidenceLevel = 60 | 75 | 90;
 
 interface ScoreResult {
     points: number;

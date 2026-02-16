@@ -30,8 +30,8 @@ function BoundInput({
   onKeyDown,
 }: BoundInputProps) {
   return (
-    <div className="space-y-1.5">
-      <label className="text-sm font-semibold">{label}</label>
+    <div className="space-y-2">
+      <label className="text-xs font-semibold uppercase tracking-wider text-muted">{label}</label>
       {useScientific ? (
         <div className="space-y-1">
           <div className="bound-group">
@@ -131,12 +131,14 @@ export default function QuestionCard({
     <>
       {/* Question */}
       <div>
-        <p className="text-2xl sm:text-3xl font-normal leading-snug">{question}</p>
+        <p className="text-3xl sm:text-4xl font-medium leading-snug tracking-tight">{question}</p>
       </div>
 
       {/* Game Controls */}
       <div className="space-y-6">
-        <h2 className="text-lg font-bold">{confidence}% Confidence Interval</h2>
+        <h2 className="text-base font-bold uppercase tracking-wider" style={{ color: "var(--accent)" }}>
+          {confidence}% Confidence Interval
+        </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <BoundInput

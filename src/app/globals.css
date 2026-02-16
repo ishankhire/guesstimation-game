@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #1a1a1a;
-  --accent: #5B5FEF;
-  --accent-light: #7B7FFF;
-  --surface: #f5f5f5;
-  --surface-light: #eeeeee;
-  --success: #22c55e;
-  --danger: #ef4444;
-  --muted: #6b7280;
-  --border: #d1d5db;
+  --background: #0f1117;
+  --foreground: #e8e6e3;
+  --accent: #e5a83b;
+  --accent-light: #f0be5a;
+  --surface: #1a1d27;
+  --surface-light: #242836;
+  --success: #34d399;
+  --danger: #f87171;
+  --muted: #8b8d97;
+  --border: #2d3040;
 }
 
 @theme inline {
@@ -34,80 +34,81 @@ body {
   font-family: var(--font-sans), system-ui, sans-serif;
 }
 
-/* Confidence bar — inline row of options */
+/* Confidence bar — pill-style buttons */
 .confidence-bar {
   display: inline-flex;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  overflow: hidden;
+  gap: 0.5rem;
+  background: var(--surface);
+  border-radius: 999px;
+  padding: 0.25rem;
 }
 
 .confidence-bar button {
-  padding: 0.4rem 1rem;
-  font-size: 0.95rem;
-  font-weight: 500;
+  padding: 0.45rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
   border: none;
-  border-right: 1px solid var(--border);
-  background: var(--background);
-  color: var(--foreground);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
   cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.confidence-bar button:last-child {
-  border-right: none;
+  transition: all 0.2s ease;
 }
 
 .confidence-bar button:hover {
-  background: var(--surface);
+  color: var(--foreground);
+  background: var(--surface-light);
 }
 
 .confidence-bar button.active {
   background: var(--accent);
-  color: #fff;
+  color: var(--background);
 }
 
-/* Tab bar — Game / Leaderboard navigation */
+/* Tab bar — pill-style navigation */
 .tab-bar {
   display: inline-flex;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  overflow: hidden;
+  gap: 0.25rem;
+  background: var(--surface);
+  border-radius: 999px;
+  padding: 0.25rem;
 }
 
 .tab-bar button {
   padding: 0.5rem 1.5rem;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   border: none;
-  border-right: 1px solid var(--border);
-  background: var(--background);
-  color: var(--foreground);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
   cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.tab-bar button:last-child {
-  border-right: none;
+  transition: all 0.2s ease;
 }
 
 .tab-bar button:hover {
-  background: var(--surface);
+  color: var(--foreground);
+  background: var(--surface-light);
 }
 
 .tab-bar button.active {
   background: var(--accent);
-  color: #fff;
+  color: var(--background);
 }
 
-/* Bound input group — 10^ [input] unit */
+/* Bound input group */
 .bound-group {
   display: flex;
   align-items: stretch;
-  border: 1.5px solid var(--accent);
-  border-radius: 4px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
   overflow: hidden;
-  background: var(--background);
+  background: var(--surface-light);
+  transition: border-color 0.2s ease;
+}
+
+.bound-group:focus-within {
+  border-color: var(--accent);
 }
 
 .bound-group .prefix,
@@ -115,7 +116,7 @@ body {
   display: flex;
   align-items: center;
   padding: 0.5rem 0.75rem;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--muted);
   background: var(--surface);
   white-space: nowrap;
@@ -125,37 +126,40 @@ body {
   flex: 1;
   border: none;
   outline: none;
-  padding: 0.6rem 0.75rem;
+  padding: 0.65rem 0.75rem;
   font-size: 1rem;
   font-family: var(--font-sans), system-ui, sans-serif;
   color: var(--foreground);
-  background: var(--background);
+  background: var(--surface-light);
   min-width: 0;
 }
 
 .bound-group input::placeholder {
-  color: var(--border);
+  color: var(--muted);
+  opacity: 0.5;
 }
 
-/* Submit button */
+/* Submit button — pill shape */
 .submit-btn {
   background: var(--accent);
-  color: #fff;
+  color: var(--background);
   border: none;
-  border-radius: 4px;
-  padding: 0.6rem 1.5rem;
+  border-radius: 999px;
+  padding: 0.65rem 2rem;
   font-size: 0.95rem;
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: all 0.2s ease;
+  letter-spacing: 0.02em;
 }
 
 .submit-btn:hover:not(:disabled) {
   background: var(--accent-light);
+  transform: translateY(-1px);
 }
 
 .submit-btn:disabled {
-  opacity: 0.4;
+  opacity: 0.35;
   cursor: not-allowed;
 }
 
@@ -168,7 +172,7 @@ body {
   }
 
   50% {
-    color: rgba(239, 68, 68, 0.4);
+    color: rgba(248, 113, 113, 0.35);
   }
 }
 
@@ -193,28 +197,30 @@ body {
   animation: slide-up 0.3s ease-out;
 }
 
-/* Start/end screen button */
+/* Start/end screen button — larger pill */
 .play-btn {
   background: var(--accent);
-  color: #fff;
+  color: var(--background);
   border: none;
-  border-radius: 6px;
+  border-radius: 999px;
   padding: 0.85rem 2.5rem;
   font-size: 1.05rem;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s ease;
+  letter-spacing: 0.02em;
 }
 
 .play-btn:hover {
   background: var(--accent-light);
+  transform: translateY(-1px);
 }
 
-/* Card for feedback / start */
+/* Card — dark elevated surface */
 .card {
-  background: var(--background);
+  background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 12px;
   padding: 1.5rem;
 }
 

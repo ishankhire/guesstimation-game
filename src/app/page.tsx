@@ -40,7 +40,7 @@ export default function Home() {
   const [score, setScore] = useState(0);
   const [rating, setRating] = useState(INITIAL_RATING);
   const [questionsPlayed, setQuestionsPlayed] = useState(0);
-  const [confidence, setConfidence] = useState<ConfidenceLevel>(80);
+  const [confidence, setConfidence] = useState<ConfidenceLevel>(75);
 
   // Plain mode bounds
   const [lowerPlain, setLowerPlain] = useState("");
@@ -106,7 +106,7 @@ export default function Home() {
       setQuestionIndex(0);
       setScore(0);
       if (resetRating) setRating(INITIAL_RATING);
-      setConfidence(80);
+      setConfidence(75);
       resetBounds();
       setTimeRemaining(TIME_PER_QUESTION);
       setPhase("playing");
@@ -257,7 +257,7 @@ export default function Home() {
       return;
     }
     setQuestionIndex((prev) => prev + 1);
-    setConfidence(80);
+    setConfidence(75);
     resetBounds();
     setTimeRemaining(TIME_PER_QUESTION);
     setFeedbackData(null);
